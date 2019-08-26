@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="dao.EncabezadoFactura" table="ENCABEZADOFACTURA">
+        <id column="IDENCABEZADOFACTURA" name="IdEncabezadoFactura" type="int">
+            <generator class="assigned"></generator>
+        </id>
+        <property name="valorventa">
+            <column name="VALORVENTA"></column>
+        </property>
+        <property name="descuento">
+            <column name="DESCUENTO"></column>
+        </property>
+        <property name="subtotal">
+            <column name="SUBTOTAL"></column>
+        </property>
+        <property name="iva">
+            <column name="IVA"></column>
+        </property>
+        <property name="totalventa">
+            <column name="TOTALVENTA"></column>
+        </property>
+        <property name="idcliente">
+            <column name="IDCLIENTE"></column>
+        </property>
+        <property name="idempleado">
+            <column name="IDEMPLEADO"></column>
+        </property>
+    </class>
+</hibernate-mapping>

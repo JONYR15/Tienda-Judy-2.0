@@ -1,0 +1,52 @@
+#top {
+    background-color: #036fab;
+    color: white;
+    height: 100px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#_content{
+    margin: 0px;
+    padding: 0px;
+    width: 100%; 
+    height: auto;
+}
+
+#bottom {
+    background-color: red;
+    padding: 0px;
+    margin: 0px;
+    height: 10%;
+}
+
+#left {
+    float: left;
+    width: 20%;
+    background-color: #ece3a5;
+}
+
+#right {
+    width: 20%;
+    float: right;
+    background-color: #ece3a5;    
+}
+
+#content{
+    width: 60%;
+    float: left;
+}
+
+#top a:link, #top a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+

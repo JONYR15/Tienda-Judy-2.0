@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="dao.Empleado" table="EMPLEADO">
+        <id column="IDEMPLEADO" name="IdEmpleado" type="int">
+            <generator class="assigned"></generator>
+        </id>
+        <property name="nombre">
+            <column name="NOMBRE"></column>
+        </property>
+        <property name="apellido1">
+            <column name="APELLIDO1"></column>
+        </property>
+        <property name="apellido2">
+            <column name="APELLIDO2"></column>
+        </property>
+        <property name="telefono">
+            <column name="TELEFONO"></column>
+        </property>
+        <property name="correo">
+            <column name="CORREO"></column>
+        </property>
+        <property name="salario">
+            <column name="SALARIO"></column>
+        </property>
+    </class>
+</hibernate-mapping>
