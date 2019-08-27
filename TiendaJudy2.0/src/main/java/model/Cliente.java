@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.tiendajudy2.model;
+package model;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,53 +25,48 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author toursys
  */
-@Stateless
 @Entity
-@Table(name = "EMPLEADO")
+@Table(name = "CLIENTE")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Empleado.findAll", query = "SELECT e FROM Empleado e")
-    , @NamedQuery(name = "Empleado.findByIdEmpleado", query = "SELECT e FROM Empleado e WHERE e.idEmpleado = :idEmpleado")
-    , @NamedQuery(name = "Empleado.findByNombre", query = "SELECT e FROM Empleado e WHERE e.nombre = :nombre")
-    , @NamedQuery(name = "Empleado.findByTelefono", query = "SELECT e FROM Empleado e WHERE e.telefono = :telefono")
-    , @NamedQuery(name = "Empleado.findByCorreo", query = "SELECT e FROM Empleado e WHERE e.correo = :correo")
-    , @NamedQuery(name = "Empleado.findBySalario", query = "SELECT e FROM Empleado e WHERE e.salario = :salario")})
-public class Empleado implements Serializable {
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")
+    , @NamedQuery(name = "Cliente.findByIdCliente", query = "SELECT c FROM Cliente c WHERE c.idCliente = :idCliente")
+    , @NamedQuery(name = "Cliente.findByNombre", query = "SELECT c FROM Cliente c WHERE c.nombre = :nombre")
+    , @NamedQuery(name = "Cliente.findByTelefono", query = "SELECT c FROM Cliente c WHERE c.telefono = :telefono")
+    , @NamedQuery(name = "Cliente.findByCorreo", query = "SELECT c FROM Cliente c WHERE c.correo = :correo")})
+public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "ID_EMPLEADO")
-    private Integer idEmpleado;
+    @Column(name = "ID_CLIENTE")
+    private Integer idCliente;
     @Size(max = 50)
     @Column(name = "NOMBRE")
     private String nombre;
     @Size(max = 30)
     @Column(name = "TELEFONO")
     private String telefono;
-    @Size(max = 100)
+    @Size(max = 10)
     @Column(name = "CORREO")
     private String correo;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "SALARIO")
-    private Double salario;
-    @OneToMany(mappedBy = "idEmpleado", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idCliente", fetch = FetchType.LAZY)
     private List<EncabezadoFactura> encabezadoFacturaList;
 
-    public Empleado() {
+    public Cliente() {
     }
 
-    public Empleado(Integer idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public Cliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public Integer getIdEmpleado() {
-        return idEmpleado;
+    public Integer getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdEmpleado(Integer idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNombre() {
@@ -99,14 +93,6 @@ public class Empleado implements Serializable {
         this.correo = correo;
     }
 
-    public Double getSalario() {
-        return salario;
-    }
-
-    public void setSalario(Double salario) {
-        this.salario = salario;
-    }
-
     @XmlTransient
     public List<EncabezadoFactura> getEncabezadoFacturaList() {
         return encabezadoFacturaList;
@@ -119,18 +105,18 @@ public class Empleado implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idEmpleado != null ? idEmpleado.hashCode() : 0);
+        hash += (idCliente != null ? idCliente.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Empleado)) {
+        if (!(object instanceof Cliente)) {
             return false;
         }
-        Empleado other = (Empleado) object;
-        if ((this.idEmpleado == null && other.idEmpleado != null) || (this.idEmpleado != null && !this.idEmpleado.equals(other.idEmpleado))) {
+        Cliente other = (Cliente) object;
+        if ((this.idCliente == null && other.idCliente != null) || (this.idCliente != null && !this.idCliente.equals(other.idCliente))) {
             return false;
         }
         return true;
@@ -138,7 +124,7 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tiendajudy2.model.Empleado[ idEmpleado=" + idEmpleado + " ]";
+        return "model.Cliente[ idCliente=" + idCliente + " ]";
     }
     
 }
