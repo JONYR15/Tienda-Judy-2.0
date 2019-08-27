@@ -7,6 +7,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @author toursys
  */
+@Stateless
 @Entity
 @Table(name = "CLIENTE")
 @XmlRootElement
