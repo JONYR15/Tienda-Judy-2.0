@@ -18,9 +18,9 @@
         <div id="top">
             <ui:insert name="top">Top</ui:insert>
         </div>
-        <div>
+        <div id="_content">
             <div id="left">
-                 <h:form>
+                <h:form>
                     <p:panelMenu style="width: 100%;">
                         <p:submenu label="Acciones" icon="ui-icon-clipboard">
                             <p:menuitem value="Ingresar Clientes" icon="ui-icon-plus"
@@ -34,12 +34,11 @@
                     </p:panelMenu>
                 </h:form>
             </div>
-            <div id="content" class="left_content">
-                <ui:insert name="content">Content</ui:insert>
+            <div id="content">
+                <div class="container" style="width:100%;">
+                    <ui:insert name="content">Content</ui:insert>
+                </div>
             </div>
-        </div>
-        <div id="bottom">
-            <ui:insert name="bottom">Bottom</ui:insert>
         </div>
 
     </h:body>
