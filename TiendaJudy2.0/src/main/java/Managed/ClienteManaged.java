@@ -57,5 +57,18 @@ public class ClienteManaged implements Serializable {
     public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
     }
+    
+    public void crearCliente(){
+        if (cliente!= null) {
+            clienteDAO.createCliente(cliente);
+        }
+    }
+    
+    
+    public void editarCliente(){
+        if (cliente!=null) {
+            clienteDAO.editarCliente(cliente);
+        }
+    }
 
 }
