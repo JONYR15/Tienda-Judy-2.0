@@ -7,40 +7,39 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="default.css" library="css"/>
-        <h:outputStylesheet name="../resources/css/cssLayout.css" library="css"/>
-        <h:outputStylesheet name="../resources/css/bootstrap.css" library="css"/>
-        <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        
+        <h:outputStylesheet name="bootstrap.min.css" library="css"/>
 
-        <title>Facelets Template</title>
+        <title>Tienda Judy</title>
     </h:head>
 
     <h:body>
 
         <div id="top">
             <ui:insert name="top">
-                <nav class="navbar navbar-inverse">
-                    <ul class="nav nav-pills">
-                        <li role="presentation" class="active"><a href="#">Clientes</a></li>
-                        <li role="presentation"><a href="#">Empleados</a></li>
-                        <li role="presentation"><a href="#">Productos</a></li>
-                        <li role="presentation"><a href="#">Facturas</a></li>
-                    </ul>
-                </nav>
+                <h1>Tienda Judy</h1>
             </ui:insert>
         </div>
         <div id="_content">
             <div id="left">
                 <h:form>
-                    <p:panelMenu style="width: 100%;">
-                        <p:submenu label="Acciones" icon="ui-icon-clipboard">
+                    <p:panelMenu style="width: 20%;">
+                        <p:submenu label="Clientes" icon="ui-icon-clipboard">
                             <p:menuitem value="Ingresar Clientes" icon="ui-icon-plus"
                                         url="/ingresarClientes.xhtml"/>
                             <p:menuitem value="Ver Clientes" icon="ui-icon-plus"
                                         url="/verClientes.xhtml"/>
+                        </p:submenu>
+                        <p:submenu label="Empleado" icon="ui-icon-clipboard">
+                            <p:menuitem value="Ingresar Empleados" icon="ui-icon-document" 
+                                        url="/ingresarEmpleado.xhtml"/>
+                            <p:menuitem value="Ver Empleados" icon="ui-icon-document" 
+                                        url="/verEmpleado.xhtml"/>
+                        </p:submenu>
+                        <p:submenu label="Productos" icon="ui-icon-clipboard">
                             <p:menuitem value="Ingresar Productos" icon="ui-icon-document" 
                                         url="/ingresarProductos.xhtml"/>
-                            <p:menuitem value="Ver Producto" icon="ui-icon-document" 
+                            <p:menuitem value="Ver Productos" icon="ui-icon-document" 
                                         url="/verProductos.xhtml"/>
                         </p:submenu>
                         <p:separator/>
@@ -48,7 +47,7 @@
                 </h:form>
             </div>
             <div id="content">
-                <div class="container" style="width:100%;">
+                <div class="container" style="width:80%;">
                     <ui:insert name="content">
                         <h1>BIENVENIDO A TIENDA JUDY</h1>
 

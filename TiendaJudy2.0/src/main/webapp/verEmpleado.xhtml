@@ -6,7 +6,7 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        <p:dataTable var="empleado" value="#{empleadoManaged.empleado}"
+        <p:dataTable var="empleado" value="#{empleadoManaged.empleados}"
                      rows="10" paginator="true">
             <p:column headerText="ID Empleado">
                 <h:outputText value="#{empleado.idEmpleado}"/>
