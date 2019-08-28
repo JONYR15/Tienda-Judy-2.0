@@ -15,10 +15,7 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-/**
- *
- * @author toursys
- */
+
 @Named
 @ViewScoped
 public class ClienteManaged implements Serializable {
@@ -60,7 +57,12 @@ public class ClienteManaged implements Serializable {
     
     public void crearCliente(){
         if (cliente!= null) {
-            clienteDAO.createCliente(cliente);
+            if (clienteDAO.buscarCliente(cliente.getIdCliente())==null) {
+                clienteDAO.createCliente(cliente);  
+            }else{
+            
+            }
+            
         }
     }
     

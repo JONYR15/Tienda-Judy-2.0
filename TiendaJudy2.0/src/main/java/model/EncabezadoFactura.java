@@ -22,10 +22,7 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author toursys
- */
+
 @Entity
 @Table(name = "ENCABEZADO_FACTURA")
 @XmlRootElement

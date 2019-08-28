@@ -22,10 +22,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author toursys
- */
+
 @Stateless
 @Entity
 @Table(name = "CLIENTE")
@@ -44,13 +41,13 @@ public class Cliente implements Serializable {
     @NotNull
     @Column(name = "ID_CLIENTE")
     private Integer idCliente;
-    @Size(max = 50)
+    @Size(max = 100)
     @Column(name = "NOMBRE")
     private String nombre;
     @Size(max = 30)
     @Column(name = "TELEFONO")
     private String telefono;
-    @Size(max = 10)
+    @Size(max = 100)
     @Column(name = "CORREO")
     private String correo;
     @OneToMany(mappedBy = "idCliente", fetch = FetchType.LAZY)

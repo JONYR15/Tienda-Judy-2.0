@@ -1,38 +1,36 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-       <ui:composition template="./recursos/Master/Master.xhtml">
-           <ui:define name="content">
-               <p:dataTable var="produc" value="#{verProductos.productos}"
-                             rows="10" paginator="true">
-                    <p:column headerText="IdProducto">
-                        <h:outputText value="#{produc.idProducto}"/>
-                    </p:column>
-                   <p:column headerText="Nombre">
-                        <h:outputText value="#{produc.nombre}"/>
-                    </p:column>
-                   <p:column headerText="Descripcion">
-                       <h:outputText value="#{produc.descripcion}"/>
-                    </p:column>
-                   <p:column headerText="Cantidad">
-                       <h:outputText value="#{produc.cantidad}"/>
-                    </p:column>
-                   <p:column headerText="PrecioCompra">
-                       <h:outputText value="#{produc.precioCompra}"/>
-                    </p:column>
-                   <p:column headerText="">
-                       <h:outputText value="#{produc.precioVenta}"/>
-                    </p:column>
-                </p:dataTable>     
-            </ui:define>     
-        </ui:composition>
-    </h:body>
-</html>
+    
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <p:dataTable var="producto" value="#{productoManaged.productos}"
+                     rows="10" paginator="true">
+            <p:column headerText="ID Producto">
+                <h:outputText value="#{producto.idProducto}"/>
+            </p:column>
+            <p:column headerText="Nombre">
+                <h:outputText value="#{producto.nombre}"/>
+            </p:column>
+            <p:column headerText="Descripcion">
+                <h:outputText value="#{producto.descripcion}"/>
+            </p:column>
+            <p:column headerText="Talla">
+                <h:outputText value="#{producto.talla}"/>
+            </p:column>
+            <p:column headerText="Cantidad">
+                <h:outputText value="#{producto.cantidad}"/>
+            </p:column>
+            <p:column headerText="Precio Compra">
+                <h:outputText value="#{producto.precioCompra}"/>
+            </p:column>
+            <p:column headerText="Precio Venta">
+                <h:outputText value="#{producto.precioVenta}"/>
+            </p:column>
+        </p:dataTable>     
+    </ui:define>     
+</ui:composition>
+
 

@@ -21,10 +21,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author toursys
- */
+
 @Entity
 @Table(name = "PRODUCTO")
 @XmlRootElement
@@ -45,10 +42,10 @@ public class Producto implements Serializable {
     @NotNull
     @Column(name = "ID_PRODUCTO")
     private Integer idProducto;
-    @Size(max = 50)
+    @Size(max = 100)
     @Column(name = "NOMBRE")
     private String nombre;
-    @Size(max = 30)
+    @Size(max = 100)
     @Column(name = "DESCRIPCION")
     private String descripcion;
     @Size(max = 10)

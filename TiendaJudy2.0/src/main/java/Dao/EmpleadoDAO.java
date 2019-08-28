@@ -5,7 +5,7 @@
  */
 package Dao;
 
-import model.Cliente;
+import model.Empleado;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -17,13 +17,13 @@ import javax.persistence.PersistenceException;
 
 
 @Stateless
-public class ClienteDAO extends AbstractFacade<Cliente> implements Serializable {
+public class EmpleadoDAO extends AbstractFacade<Empleado> implements Serializable {
 
     @PersistenceContext
     private EntityManager em;
 
-    public ClienteDAO() {
-        super(Cliente.class);
+    public EmpleadoDAO() {
+        super(Empleado.class);
     }
 
     @Override
@@ -31,33 +31,33 @@ public class ClienteDAO extends AbstractFacade<Cliente> implements Serializable 
         return em;
     }
 
-    public void createCliente(Cliente cliente) {
+    public void createEmpleado(Empleado empleado) {
         try {
-            super.persist(cliente);
+            super.persist(empleado);
         } catch (PersistenceException e) {
         }
     }
 
-    public void editarCliente(Cliente cliente) {
+    public void editarEmpleado(Empleado empleado) {
         try {
-            super.merge(cliente);
+            super.merge(empleado);
         } catch (PersistenceException e) {
         }
     }
 
-    public void eliminarCliente(Cliente cliente) {
+    public void eliminarEmpleado(Empleado empleado) {
         try {
-            super.remove(cliente);
+            super.remove(empleado);
         } catch (PersistenceException e) {
         }
     }
 
-    public Cliente buscarCliente(Integer idCliente) {
-        return super.find(idCliente);
+    public Empleado buscarEmpleado(Integer idEmpleado) {
+        return super.find(idEmpleado);
     }
 
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-    public List<Cliente> obtenerClientes() {
+    public List<Empleado> obtenerEmpleados() {
         return super.findAll();
     }
 

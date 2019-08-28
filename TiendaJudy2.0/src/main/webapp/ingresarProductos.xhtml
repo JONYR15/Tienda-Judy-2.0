@@ -3,8 +3,9 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                template="index.xhtml"
+                template="template.xhtml"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
     <ui:define name="content">
         <h4>Ingresar Producto</h4>
         <h:form id="formulario">
@@ -15,7 +16,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3"> 
                         <h:inputText id="id" label="id" required="true"
-                                     value="#{manageProducto.producto.idProducto}"
+                                     value="#{productoManaged.producto.idProducto}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -28,7 +29,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="nombre" label="nombre" required="true"
-                                     value="#{manageProducto.producto.nombre}"
+                                     value="#{productoManaged.producto.nombre}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -41,7 +42,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputTextarea id="descripcion" label="descripcion" required="true"
-                                         value="#{manageProducto.producto.descripcion}"
+                                         value="#{productoManaged.producto.descripcion}"
                                          class="form-control" 
                                          requiredMessage="Campo requerido">
                         </h:inputTextarea>
@@ -54,7 +55,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="talla" label="talla" required="true"
-                                     value="#{manageProducto.producto.talla}"
+                                     value="#{productoManaged.producto.talla}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -67,7 +68,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="cantidad" label="cantidad" required="true"
-                                     value="#{manageProducto.producto.cantidad}"
+                                     value="#{productoManaged.producto.cantidad}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -80,7 +81,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="preciocompra" label="preciocompra" required="true"
-                                     value="#{manageProducto.producto.precioCompra}"
+                                     value="#{productoManaged.producto.precioCompra}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -93,7 +94,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="precioventa" label="precioventa" required="true"
-                                     value="#{manageProducto.producto.precioVenta}"
+                                     value="#{productoManaged.producto.precioVenta}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -102,7 +103,7 @@
                 </div>
                 <div style="text-align: center;">
                     <h:commandButton id="tupla" value="Guardar" 
-                                     action="#{manageProducto.guardarProducto()}"
+                                     action="#{productoManaged.crearProducto()}"
                                      class="btn btn-primary"/>
                 </div>
             </div>
