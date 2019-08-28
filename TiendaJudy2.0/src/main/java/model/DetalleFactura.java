@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.tiendajudy2.model;
+package model;
 
 import java.io.Serializable;
-import javax.ejb.Stateless;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @author toursys
  */
-@Stateless
 @Entity
 @Table(name = "DETALLE_FACTURA")
 @XmlRootElement
@@ -146,7 +144,7 @@ public class DetalleFactura implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tiendajudy2.model.DetalleFactura[ idDetalleFactura=" + idDetalleFactura + " ]";
+        return "model.DetalleFactura[ idDetalleFactura=" + idDetalleFactura + " ]";
     }
     
 }

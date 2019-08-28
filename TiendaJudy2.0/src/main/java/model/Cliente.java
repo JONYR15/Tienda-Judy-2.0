@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.tiendajudy2.model;
+package model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -126,7 +126,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tiendajudy2.model.Cliente[ idCliente=" + idCliente + " ]";
+        return "model.Cliente[ idCliente=" + idCliente + " ]";
     }
     
 }

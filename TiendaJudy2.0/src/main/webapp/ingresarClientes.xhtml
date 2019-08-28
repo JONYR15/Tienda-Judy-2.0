@@ -4,9 +4,9 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
-                template="index.xhtml"
+                template="template.xhtml"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-    
+
     <ui:define name="content">
         <h4>Ingresar Cliente</h4>
         <h:form id="formulario">
@@ -17,7 +17,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3"> 
                         <h:inputText id="id" label="id" required="true"
-                                     value="#{manageCliente.cliente.idCliente}"
+                                     value="#{clienteManaged.cliente.idCliente}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -30,37 +30,11 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="nombre" label="nombre" required="true"
-                                     value="#{manageCliente.cliente.nombre}"
+                                     value="#{clienteManaged.cliente.nombre}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                         <h:message for="nombre" class="text-danger"/>                                             
-                    </div>
-                </div>
-                <div class="form-group">
-                    <h:outputLabel value="Apellido1"
-                                   for="apellido1"
-                                   class="control-label col-sm-3"/>
-                    <div class="col-sm-3">
-                        <h:inputTextarea id="apellido1" label="apellido1" required="true"
-                                         value="#{manageCliente.cliente.apellido1}"
-                                         class="form-control" 
-                                         requiredMessage="Campo requerido">
-                        </h:inputTextarea>
-                        <h:message for="apellido1" class="text-danger"/>                                             
-                    </div>
-                </div>
-                <div class="form-group">
-                    <h:outputLabel value="Apellido2"
-                                   for="apellido2"
-                                   class="control-label col-sm-3"/>
-                    <div class="col-sm-3">
-                        <h:inputText id="apellido2" label="apellido2" required="true"
-                                     value="#{manageCliente.cliente.apellido2}"
-                                     class="form-control" 
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                        <h:message for="apellido2" class="text-danger"/>                                             
                     </div>
                 </div>
                 <div class="form-group">
@@ -69,7 +43,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="correo" label="correo" required="true"
-                                     value="#{manageCliente.cliente.correo}"
+                                     value="#{clienteManaged.cliente.correo}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -82,7 +56,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="telefono" label="telefono" required="true"
-                                     value="#{manageCliente.cliente.telefono}"
+                                     value="#{clienteManaged.cliente.telefono}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -91,7 +65,7 @@
                 </div>
                 <div style="text-align: center;">
                     <h:commandButton id="tupla" value="Guardar" 
-                                     action="#{manageCliente.guardarCliente()}"
+                                     action="#{clienteManaged.crearCliente()}"
                                      class="btn btn-primary"/>
                 </div>
             </div>

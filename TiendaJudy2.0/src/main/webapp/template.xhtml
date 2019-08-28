@@ -7,8 +7,8 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="resources/css/default.css"/>
-        <h:outputStylesheet name="resources/css/cssLayout.css"/>
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="/resources/css/cssLayout.css"/>
         <h:outputStylesheet name="resources/css/bootstrap.min.css"/>
         <title>Facelets Template</title>
     </h:head>
@@ -25,6 +25,8 @@
                         <p:submenu label="Acciones" icon="ui-icon-clipboard">
                             <p:menuitem value="Ingresar Clientes" icon="ui-icon-plus"
                                         url="/ingresarClientes.xhtml"/>
+                             <p:menuitem value="Ver Clientes" icon="ui-icon-plus"
+                                        url="/verClientes.xhtml"/>
                             <p:menuitem value="Ingresar Productos" icon="ui-icon-document" 
                                         url="ingresarProductos.xhtml"/>
                             <p:menuitem value="Editar" icon="ui-icon-document" 

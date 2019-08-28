@@ -6,7 +6,7 @@
 package Managed;
 
 import Dao.ClienteDAO;
-import com.mycompany.tiendajudy2.model.Cliente;
+import model.Cliente;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

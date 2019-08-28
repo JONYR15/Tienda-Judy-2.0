@@ -5,7 +5,7 @@
  */
 package Dao;
 
-import com.mycompany.tiendajudy2.model.Cliente;
+import model.Cliente;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -24,6 +24,10 @@ public class ClienteDAO extends AbstractFacade<Cliente> implements Serializable 
 
     @PersistenceContext
     private EntityManager em;
+
+    public ClienteDAO() {
+        super(Cliente.class);
+    }
 
     @Override
     public EntityManager getEntityManager() {
@@ -50,14 +54,14 @@ public class ClienteDAO extends AbstractFacade<Cliente> implements Serializable 
         } catch (PersistenceException e) {
         }
     }
-    
-    public Cliente buscarCliente(Integer idCliente){
-       return super.find(idCliente);
+
+    public Cliente buscarCliente(Integer idCliente) {
+        return super.find(idCliente);
     }
-    
+
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-    public List<Cliente> obtenerClientes(){
-        return em.createQuery("Select * FROM Cliente").getResultList();
+    public List<Cliente> obtenerClientes() {
+        return super.findAll();
     }
 
 }

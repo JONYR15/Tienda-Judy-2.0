@@ -16,7 +16,7 @@ import javax.validation.ValidatorFactory;
 
 /**
  *
- * @author ToursysDevelopers
+ * @author 
  */
 public abstract class AbstractFacade<T> {
 
@@ -43,7 +43,6 @@ public abstract class AbstractFacade<T> {
                 ConstraintViolation<T> cv = iterator.next();
                 System.err.println(ERROR + cv.getRootBeanClass().getName()+"."+cv.getPropertyPath() + " " +cv.getMessage());
                 
-               
             }
         }else{
             getEntityManager().persist(entity);
@@ -59,7 +58,6 @@ public abstract class AbstractFacade<T> {
             while(iterator.hasNext()){
                 ConstraintViolation<T> cv = iterator.next();
                 System.err.println(ERROR + cv.getRootBeanClass().getName()+"."+cv.getPropertyPath() + " " +cv.getMessage());
-     
             }
         }else{
             getEntityManager().merge(entity);
