@@ -17,7 +17,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3"> 
                         <h:inputText id="id" label="id" required="true"
-                                     value="#{clienteManaged.cliente.idCliente}"
+                                     value="#{clienteManaged.clienteEditar.idCliente}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -30,7 +30,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="nombre" label="nombre" required="true"
-                                     value="#{clienteManaged.cliente.nombre}"
+                                     value="#{clienteManaged.clienteEditar.nombre}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -43,7 +43,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="correo" label="correo" required="true"
-                                     value="#{clienteManaged.cliente.correo}"
+                                     value="#{clienteManaged.clienteEditar.correo}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -56,7 +56,7 @@
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3">
                         <h:inputText id="telefono" label="telefono" required="true"
-                                     value="#{clienteManaged.cliente.telefono}"
+                                     value="#{clienteManaged.clienteEditar.telefono}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
@@ -65,7 +65,7 @@
                 </div>
                 <div style="text-align: center;">
                     <h:commandButton id="tupla" value="Guardar" 
-                                     action="#{clienteManaged.crearCliente()}"
+                                     action="#{clienteManaged.editarCliente()}"
                                      class="btn btn-primary"/>
                 </div>
             </div>

@@ -3,7 +3,8 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="template.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
         <p:dataTable var="cliente" value="#{clienteManaged.clientes}"
@@ -19,6 +20,12 @@
             </p:column>
             <p:column headerText="Correo">
                 <h:outputText value="#{cliente.correo}"/>
+            </p:column>
+            <p:column headerText="Acciones">
+                <p:link outcome="editarCliente.xhtml?faces-redirect=true">
+                   EDITAR
+                    <f:param  value="#{cliente.idCliente}" name="id"/> 
+                </p:link>
             </p:column>
         </p:dataTable>     
     </ui:define>     

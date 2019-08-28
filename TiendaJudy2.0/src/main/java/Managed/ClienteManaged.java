@@ -8,13 +8,12 @@ package Managed;
 import Dao.ClienteDAO;
 import model.Cliente;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
 
 @Named
 @ViewScoped
@@ -25,6 +24,9 @@ public class ClienteManaged implements Serializable {
 
     @EJB
     private Cliente cliente;
+
+    @EJB
+    private Cliente clienteEditar;
 
     private List<Cliente> clientes;
 
@@ -44,6 +46,18 @@ public class ClienteManaged implements Serializable {
         this.cliente = cliente;
     }
 
+    public Cliente getClienteEditar() {
+        String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
+        if (id != null || !"".equals(id)) {
+            clienteEditar = clienteDAO.buscarCliente(Integer.parseInt(id));
+        }
+        return clienteEditar;
+    }
+
+    public void setClienteEditar(Cliente clienteEditar) {
+        this.clienteEditar = clienteEditar;
+    }
+
     public List<Cliente> getClientes() {
         if (clientes == null) {
             clientes = clienteDAO.obtenerClientes();
@@ -54,22 +68,24 @@ public class ClienteManaged implements Serializable {
     public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
     }
-    
-    public void crearCliente(){
-        if (cliente!= null) {
-            if (clienteDAO.buscarCliente(cliente.getIdCliente())==null) {
-                clienteDAO.createCliente(cliente);  
-            }else{
-            
+
+    public void crearCliente() {
+        if (cliente != null) {
+            if (clienteDAO.buscarCliente(cliente.getIdCliente()) == null) {
+                clienteDAO.createCliente(cliente);
+                cliente = new Cliente();
+            } else {
+
             }
-            
+
         }
     }
-    
-    
-    public void editarCliente(){
-        if (cliente!=null) {
-            clienteDAO.editarCliente(cliente);
+
+    public void editarCliente() {
+        if (clienteEditar != null) {
+            if (clienteDAO.buscarCliente(clienteEditar.getIdCliente()) != null) {
+                clienteDAO.editarCliente(clienteEditar);
+            }
         }
     }
 
