@@ -43,7 +43,7 @@ public abstract class AbstractFacade<T> {
                 ConstraintViolation<T> cv = iterator.next();
                 System.err.println(ERROR + cv.getRootBeanClass().getName()+"."+cv.getPropertyPath() + " " +cv.getMessage());
                 
-                JsfUtil.addErrorMessage(ERROR + cv.getRootBeanClass().getSimpleName()+"."+cv.getPropertyPath() + " " +cv.getMessage());
+               
             }
         }else{
             getEntityManager().persist(entity);
@@ -59,8 +59,7 @@ public abstract class AbstractFacade<T> {
             while(iterator.hasNext()){
                 ConstraintViolation<T> cv = iterator.next();
                 System.err.println(ERROR + cv.getRootBeanClass().getName()+"."+cv.getPropertyPath() + " " +cv.getMessage());
-                
-                JsfUtil.addErrorMessage(ERROR + cv.getRootBeanClass().getSimpleName()+"."+cv.getPropertyPath() + " " +cv.getMessage());
+     
             }
         }else{
             getEntityManager().merge(entity);
