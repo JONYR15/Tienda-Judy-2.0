@@ -40,7 +40,7 @@ public class ProductoManaged implements Serializable {
         return producto;
     }
 
-    public void setCliente(Producto producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 
