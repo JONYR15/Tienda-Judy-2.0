@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -31,6 +32,7 @@ public class ClienteManaged implements Serializable {
     private List<Cliente> clientes;
 
     public ClienteManaged() {
+
     }
 
     @PostConstruct
@@ -69,15 +71,27 @@ public class ClienteManaged implements Serializable {
         this.clientes = clientes;
     }
 
+    public void validarId() {
+        if (cliente.getIdCliente() != null) {
+            if (clienteDAO.buscarCliente(cliente.getIdCliente()) != null) {
+                FacesContext context = FacesContext.getCurrentInstance();
+                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Ya existe un cliente con el ID: " + cliente.getIdCliente()));
+            }else{
+                FacesContext context = FacesContext.getCurrentInstance();
+                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "ID disponible para usar"));
+            }
+        }
+    }
+
     public void crearCliente() {
         if (cliente != null) {
             if (clienteDAO.buscarCliente(cliente.getIdCliente()) == null) {
                 clienteDAO.createCliente(cliente);
                 cliente = new Cliente();
             } else {
-
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Ya existe un cliente con el ID: " + cliente.getIdCliente()));
             }
-
         }
     }
 

@@ -10,16 +10,18 @@
     <ui:define name="content">
         <h4>Ingresar Cliente</h4>
         <h:form id="formulario">
+            <p:growl id="growl" life="1000" showDetail="true" sticky="true" />  
             <div class="form-horizontal">
                 <div class="form-group">
                     <h:outputLabel value="IdCliente"
                                    for="id" 
                                    class="control-label col-sm-3"/>
                     <div class="col-sm-3"> 
-                        <h:inputText id="id" label="id" required="true"
+                        <h:inputText id="id" label="id" required="true" 
                                      value="#{clienteManaged.cliente.idCliente}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
+                            <p:ajax event="change" update="formulario" listener="#{clienteManaged.validarId()}" />
                         </h:inputText>
                         <h:message for="id" class="text-danger"/> 
                     </div>

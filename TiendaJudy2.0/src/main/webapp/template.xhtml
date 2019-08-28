@@ -7,7 +7,7 @@
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        
+
         <h:outputStylesheet name="bootstrap.min.css" library="css"/>
 
         <title>Tienda Judy</title>
@@ -54,6 +54,11 @@
                     </ui:insert>
                 </div>
             </div>
+            <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+            <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+                <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+            </p:dialog>
         </div>
 
     </h:body>
