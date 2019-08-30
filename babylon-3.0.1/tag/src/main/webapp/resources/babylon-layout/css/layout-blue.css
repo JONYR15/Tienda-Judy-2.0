@@ -71,8 +71,8 @@ a {
   .layout-wrapper .layout-topbar .layout-topbar-logo {
     display: none; }
     .layout-wrapper .layout-topbar .layout-topbar-logo img {
-      margin-top: 7px;
-      height: 30px; }
+      margin-top: 0px;
+      height: 50px; }
   .layout-wrapper .layout-topbar .layout-menu-button {
     float: left;
     width: 44px;
@@ -366,8 +366,8 @@ a {
       height: 60px;
       padding-left: 12px; }
       .layout-wrapper .layout-menu-container .layout-menu-logo a img {
-        margin-top: 15px;
-        height: 30px; }
+        margin-top: 5px;
+        height: 50px; }
   .layout-wrapper .layout-menu-container .layout-profile.layout-profile-active .layout-profile-icon {
     -webkit-transform: rotate(-180deg);
     -moz-transform: rotate(-180deg);
@@ -1061,7 +1061,7 @@ a {
   background-color: #ffffff;
   border-top: 1px solid #e8e8e8; }
   .layout-footer img {
-    height: 30px; }
+    height: 50px; }
   .layout-footer .footer-icons {
     text-align: right; }
     .layout-footer .footer-icons a {
