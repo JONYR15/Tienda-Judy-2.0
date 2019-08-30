@@ -20,7 +20,7 @@
     </h:head>
 
     <h:body>
-        <div class="layout-wrapper layout-horizontal layout-menu-dark">
+        <div class="layout-wrapper #{guestPreferences.menuMode} #{guestPreferences.menuColor} #{guestPreferences.orientationRTL ? 'layout-rtl' : null}">
             <ui:include src="./topbar.xhtml"></ui:include>
             <ui:include src="./menu.xhtml"></ui:include>
 
@@ -56,7 +56,7 @@
        
         <h:outputStylesheet name="css/nanoscroller.css" library="babylon-layout" />
         <h:outputStylesheet name="css/primeflex.css" library="babylon-layout" />
-        <h:outputStylesheet name="css/layout-blue.css" library="babylon-layout" />
+        <h:outputStylesheet name="css/layout-#{guestPreferences.layout}.css" library="babylon-layout" />
     </h:body>
 
 </html>
