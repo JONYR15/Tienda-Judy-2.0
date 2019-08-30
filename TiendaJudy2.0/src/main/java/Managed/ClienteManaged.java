@@ -9,18 +9,19 @@ import Dao.ClienteDAO;
 import model.Cliente;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.apache.commons.lang3.StringUtils;
 
 @Named
 @ViewScoped
 public class ClienteManaged implements Serializable {
 
-    
     @EJB
     private ClienteDAO clienteDAO;
 
@@ -51,7 +52,7 @@ public class ClienteManaged implements Serializable {
 
     public Cliente getClienteEditar() {
         String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-        if (id != null || !"".equals(id)) {
+        if (!StringUtils.isEmpty(id)) {
             clienteEditar = clienteDAO.buscarCliente(Integer.parseInt(id));
         }
         return clienteEditar;
@@ -76,10 +77,10 @@ public class ClienteManaged implements Serializable {
         if (cliente.getIdCliente() != null) {
             if (clienteDAO.buscarCliente(cliente.getIdCliente()) != null) {
                 FacesContext context = FacesContext.getCurrentInstance();
-                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Ya existe un cliente con el ID: " + cliente.getIdCliente()));
-            }else{
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Ya existe un cliente con el ID: " + cliente.getIdCliente()));
+            } else {
                 FacesContext context = FacesContext.getCurrentInstance();
-                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "ID disponible para usar"));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "ID disponible para usar"));
             }
         }
     }
@@ -98,8 +99,21 @@ public class ClienteManaged implements Serializable {
 
     public void editarCliente() {
         if (clienteEditar != null) {
-            if (clienteDAO.buscarCliente(clienteEditar.getIdCliente()) != null) {
-                clienteDAO.editarCliente(clienteEditar);
+            Cliente cSinEditar = clienteDAO.buscarCliente(clienteEditar.getIdCliente());
+
+            if (cSinEditar != null) {
+                if (Objects.equals(cSinEditar.getNombre(), clienteEditar.getNombre())) {
+                    FacesContext context = FacesContext.getCurrentInstance();
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "Cliente no ha sufrido cambios" + clienteEditar.getIdCliente()));
+                } else {
+                    clienteDAO.editarCliente(clienteEditar);
+
+                    FacesContext context = FacesContext.getCurrentInstance();
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "Cliente Editado correctamente: " + clienteEditar.getIdCliente()));
+                    
+                    
+                    clienteEditar = new Cliente();  
+                }
             }
         }
     }
