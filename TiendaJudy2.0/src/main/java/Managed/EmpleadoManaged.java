@@ -67,6 +67,8 @@ public class EmpleadoManaged implements Serializable {
     }
     
     
+    
+    
     public void editarEmpleado(){
         if (empleado!=null) {
             empleadoDAO.editarEmpleado(empleado);

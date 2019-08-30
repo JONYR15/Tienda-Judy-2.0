@@ -20,6 +20,7 @@ import javax.inject.Named;
 @ViewScoped
 public class ClienteManaged implements Serializable {
 
+    
     @EJB
     private ClienteDAO clienteDAO;
 

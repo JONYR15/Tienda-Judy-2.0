@@ -21,7 +21,8 @@
                                      value="#{clienteManaged.cliente.idCliente}"
                                      class="form-control" 
                                      requiredMessage="Campo requerido">
-                            <p:ajax event="change" update="formulario" listener="#{clienteManaged.validarId()}" />
+                            <p:ajax event="blur" process="id" update=""
+                                    listener="#{clienteManaged.validarId()}"/>
                         </h:inputText>
                         <h:message for="id" class="text-danger"/> 
                     </div>

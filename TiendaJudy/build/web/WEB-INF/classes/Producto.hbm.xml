@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="dao.Producto" table="PRODUCTO">
+        <id column="IDPRODUCTO" name="IdProducto" type="int">
+            <generator class="assigned"></generator>
+        </id>
+        <property name="nombre">
+            <column name="NOMBRE"></column>
+        </property>
+        <property name="descripcion">
+            <column name="DESCRIPCION"></column>
+        </property>
+        <property name="talla">
+            <column name="TALLA"></column>
+        </property>
+        <property name="cantidad">
+            <column name="CANTIDAD"></column>
+        </property>
+        <property name="preciocompra">
+            <column name="PRECIOCOMPRA"></column>
+        </property>
+        <property name="precioventa">
+            <column name="PRECIOVENTA"></column>
+        </property>
+    </class>
+</hibernate-mapping>
