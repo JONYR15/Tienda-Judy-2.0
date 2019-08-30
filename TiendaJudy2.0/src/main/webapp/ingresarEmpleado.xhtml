@@ -8,81 +8,45 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="content">
-        <h4>Ingresar Empleados</h4>
-        <h:form id="formulario">
-            <div class="form-horizontal">
-                <div class="form-group">
-                    <h:outputLabel value="idEmpleado"
-                                   for="id" 
-                                   class="control-label col-sm-3"/>
-                    <div class="col-sm-3"> 
-                        <h:inputText id="id" label="id" required="true"
-                                     value="#{empleadoManaged.empleado.idEmpleado}"
-                                     class="form-control" 
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                        <h:message for="id" class="text-danger"/> 
-                    </div>
-                </div>
-                <div class="form-group">
-                    <h:outputLabel value="Nombre"
-                                   for="nombre"
-                                   class="control-label col-sm-3"/>
-                    <div class="col-sm-3">
-                        <h:inputText id="nombre" label="nombre" required="true"
-                                     value="#{empleadoManaged.empleado.nombre}"
-                                     class="form-control" 
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                        <h:message for="nombre" class="text-danger"/>                                             
-                    </div>
-                </div>
-                <div class="form-group">
-                    <h:outputLabel value="Telefono"
-                                   for="telefono"
-                                   class="control-label col-sm-3"/>
-                    <div class="col-sm-3">
-                        <h:inputText id="telefono" label="telefono" required="true"
-                                     value="#{empleadoManaged.empleado.telefono}"
-                                     class="form-control" 
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                        <h:message for="telefono" class="text-danger"/>                                             
-                    </div>
-                </div>
-                <div class="form-group">
-                    <h:outputLabel value="Correo"
-                                   for="correo"
-                                   class="control-label col-sm-3"/>
-                    <div class="col-sm-3">
-                        <h:inputText id="correo" label="correo" required="true"
-                                     value="#{empleadoManaged.empleado.correo}"
-                                     class="form-control" 
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                        <h:message for="correo" class="text-danger"/>                                             
-                    </div>
-                </div>
-                <div class="form-group">
-                    <h:outputLabel value="Salario"
-                                   for="salario"
-                                   class="control-label col-sm-3"/>
-                    <div class="col-sm-3">
-                        <h:inputText id="salario" label="salario" required="true"
-                                     value="#{empleadoManaged.empleado.salario}"
-                                     class="form-control" 
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                        <h:message for="salario" class="text-danger"/>                                             
-                    </div>
-                </div>
-                <div style="text-align: center;">
-                    <h:commandButton id="tupla" value="Guardar" 
-                                     action="#{empleadoManaged.crearEmpleado()}"
-                                     class="btn btn-primary"/>
-                </div>
-            </div>
-        </h:form>
+        <div class="card card-w-title resolution-center ui-fluid" style="max-width: 500px">
+            <h2>Ingresar Empleado</h2>
+            <h:form id="formulario">
+                <p:growl id="growl" life="1000" showDetail="true" sticky="true" />  
+                <p:panelGrid>
+                    <p:panelGrid>
+                        <p:outputLabel value="idEmpleado" for="id"/>
+
+                        <p:inputText id="id" label="id" required="true" value="#{empleadoManaged.empleado.idEmpleado}" requiredMessage="Campo requerido"/>
+                    </p:panelGrid>
+
+                    <p:panelGrid>
+                        <p:outputLabel value="Nombre" for="nombre"/>
+                        <p:inputText id="nombre" label="nombre" required="true" value="#{empleadoManaged.empleado.nombre}" requiredMessage="Campo requerido"/>
+                    </p:panelGrid>
+
+                    <p:panelGrid>
+                        <p:outputLabel value="Telefono" for="telefono" />
+                        <p:inputText id="telefono" label="telefono" required="true" value="#{empleadoManaged.empleado.telefono}" requiredMessage="Campo requerido"/>
+                    </p:panelGrid>
+
+                    <p:panelGrid>
+                        <p:outputLabel value="Correo" for="correo"/>
+                        <p:inputText id="correo" label="correo" required="true" value="#{empleadoManaged.empleado.correo}"  requiredMessage="Campo requerido"/>
+                    </p:panelGrid>
+
+                    <p:panelGrid>
+                        <p:outputLabel value="Salario" for="salario"/>
+                        <p:inputText id="salario" label="salario" required="true" value="#{empleadoManaged.empleado.salario}" requiredMessage="Campo requerido">
+                        </p:inputText>
+                    </p:panelGrid>
+                </p:panelGrid>
+                <br/>
+                <br/>
+
+                <p:commandButton value="Guardar" action="#{empleadoManaged.crearEmpleado()}"/>
+
+            </h:form>
+        </div>
     </ui:define>
 </ui:composition>
 

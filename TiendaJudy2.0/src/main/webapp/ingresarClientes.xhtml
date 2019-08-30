@@ -14,7 +14,7 @@
                 <p:growl id="growl" life="1000" showDetail="true" sticky="true" />  
                 <p:panelGrid>
                     <p:panelGrid>
-                        <p:outputLabel value="IdCliente" for="id"  class="control-label col-sm-3"/>
+                        <p:outputLabel value="IdCliente" for="id"  />
                         <br/>
                         <p:inputText id="id" label="id" required="true" value="#{clienteManaged.cliente.idCliente}" requiredMessage="Campo requerido">
                             <p:ajax event="blur" process="id" update="formulario" listener="#{clienteManaged.validarId()}"/>

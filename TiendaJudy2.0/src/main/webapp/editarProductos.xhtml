@@ -10,93 +10,93 @@
     <ui:define name="content">
         <h4>Ingresar Productos</h4>
         <h:form id="formulario">
-            <div class="form-horizontal">
-                <div class="form-group">
+            
+                
                     <h:outputLabel value="IdProducto"
                                    for="id" 
-                                   class="control-label col-sm-3"/>
-                    <div class="col-sm-3"> 
+                                   />
+                    
                         <h:inputText id="id" label="id" required="true"
                                      value="#{productoManaged.producto.idProducto}"
-                                     class="form-control" 
+                                   
                                      requiredMessage="Campo requerido">
                         </h:inputText>
-                        <h:message for="id" class="text-danger"/> 
+                       
                     </div>
                 </div>
-                <div class="form-group">
+                
                     <h:outputLabel value="Nombre"
                                    for="nombre"
-                                   class="control-label col-sm-3"/>
+                                   />
                     <div class="col-sm-3">
                         <h:inputText id="nombre" label="nombre" required="true"
                                      value="#{productoManaged.producto.nombre}"
-                                     class="form-control" 
+                                   
                                      requiredMessage="Campo requerido">
                         </h:inputText>
-                        <h:message for="nombre" class="text-danger"/>                                             
+                                                                
                     </div>
                 </div>
-                <div class="form-group">
+                
                     <h:outputLabel value="Descripcion"
                                    for="descripcion"
-                                   class="control-label col-sm-3"/>
+                                   />
                     <div class="col-sm-3">
                         <h:inputText id="descripcion" label="descripcion" required="true"
                                      value="#{productoManaged.producto.descripcion}"
-                                     class="form-control" 
+                                   
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                         <h:message for="descripcion" class="text-danger"/>                                             
                     </div>
                 </div>
-                <div class="form-group">
+                
                     <h:outputLabel value="Talla"
                                    for="talla"
-                                   class="control-label col-sm-3"/>
+                                   />
                     <div class="col-sm-3">
                         <h:inputText id="talla" label="talla" required="true"
                                      value="#{productoManaged.producto.talla}"
-                                     class="form-control" 
+                                   
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                         <h:message for="talla" class="text-danger"/>                                             
                     </div>
                 </div>
-                <div class="form-group">
+                
                     <h:outputLabel value="Cantidad"
                                    for="cantidad"
-                                   class="control-label col-sm-3"/>
+                                   />
                     <div class="col-sm-3">
                         <h:inputText id="cantidad" label="cantidad" required="true"
                                      value="#{productoManaged.producto.cantidad}"
-                                     class="form-control" 
+                                   
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                         <h:message for="cantidad" class="text-danger"/>                                             
                     </div>
                 </div>
-                <div class="form-group">
+                
                     <h:outputLabel value="PrecioCompra"
                                    for="preciocompra"
-                                   class="control-label col-sm-3"/>
+                                   />
                     <div class="col-sm-3">
                         <h:inputText id="preciocompra" label="preciocompra" required="true"
                                      value="#{productoManaged.producto.precioCompra}"
-                                     class="form-control" 
+                                   
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                         <h:message for="preciocompra" class="text-danger"/>                                             
                     </div>
                 </div>
-                <div class="form-group">
+                
                     <h:outputLabel value="PrecioVenta"
                                    for="precioventa"
-                                   class="control-label col-sm-3"/>
+                                   />
                     <div class="col-sm-3">
                         <h:inputText id="precioventa" label="precioventa" required="true"
                                      value="#{productoManaged.producto.precioVenta}"
-                                     class="form-control" 
+                                   
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                         <h:message for="precioventa" class="text-danger"/>                                             
@@ -105,7 +105,7 @@
                 <div style="text-align: center;">
                     <h:commandButton id="tupla" value="Guardar" 
                                      action="#{productoManaged.crearProducto()}"
-                                     class="btn btn-primary"/>
+                                  />
                 </div>
             </div>
         </h:form>
