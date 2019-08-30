@@ -17,8 +17,8 @@
                                    />
                     
                         <h:inputText id="id" label="id" required="true"
-                                     value="#{empleadoManaged.empleado.idEmpleado}"
-                                   
+                                     value="#{empleadoManaged.empleadoEditar.idEmpleado}"
+                                     class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                        
@@ -30,8 +30,8 @@
                                    />
                     <div class="col-sm-3">
                         <h:inputText id="nombre" label="nombre" required="true"
-                                     value="#{empleadoManaged.empleado.nombre}"
-                                   
+                                     value="#{empleadoManaged.empleadoEditar.nombre}"
+                                     class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                                                                 
@@ -43,8 +43,8 @@
                                    />
                     <div class="col-sm-3">
                         <h:inputText id="telefono" label="telefono" required="true"
-                                     value="#{empleadoManaged.empleado.telefono}"
-                                   
+                                     value="#{empleadoManaged.empleadoEditar.telefono}"
+                                     class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                                                                   
@@ -56,8 +56,8 @@
                                    />
                     <div class="col-sm-3">
                         <h:inputText id="correo" label="correo" required="true"
-                                     value="#{empleadoManaged.empleado.correo}"
-                                   
+                                     value="#{empleadoManaged.empleadoEditar.correo}"
+                                     class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                                                                    
@@ -69,8 +69,8 @@
                                    />
                     <div class="col-sm-3">
                         <h:inputText id="salario" label="salario" required="true"
-                                     value="#{empleadoManaged.empleado.salario}"
-                                   
+                                     value="#{empleadoManaged.empleadoEditar.salario}"
+                                     class="form-control" 
                                      requiredMessage="Campo requerido">
                         </h:inputText>
                         <h:message for="salario" class="text-danger"/>                                             
@@ -78,8 +78,8 @@
                 </div>
                 <div style="text-align: center;">
                     <h:commandButton id="tupla" value="Guardar" 
-                                     action="#{empleadoManaged.crearEmpleado()}"
-                                  />
+                                     action="#{empleadoManaged.editarEmpleado()}"
+                                     class="btn btn-primary"/>
                 </div>
             </div>
         </h:form>

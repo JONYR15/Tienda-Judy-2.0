@@ -24,6 +24,18 @@
             <p:column headerText="Salario">
                 <h:outputText value="#{empleado.salario}"/>
             </p:column>
+            <p:column headerText="Acciones">
+                <p:link outcome="editarEmpleado.xhtml?faces-redirect=true">
+                    EDITAR
+                    <f:param  value="#{empleado.idEmpleado}" name="id"/> 
+                </p:link>
+            </p:column>
+            <!--p:column headerText="Acciones">
+                <p:link outcome="">
+                    ELIMINAR
+                    <f:param  value="#{empleado.idEmpleado}" name="id"/> 
+                </p:link>
+            </p:column-->
         </p:dataTable>     
     </ui:define>     
 </ui:composition>

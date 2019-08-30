@@ -10,64 +10,60 @@
     <ui:define name="content">
         <h4>Ingresar Cliente</h4>
         <h:form id="formulario">
-            
-                
-                    <h:outputLabel value="IdCliente"
-                                   for="id" 
-                                   />
-                    
-                        <h:inputText id="id" label="id" required="true"
-                                     value="#{clienteManaged.clienteEditar.idCliente}"
-                                   
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                       
-                    </div>
-                </div>
-                
-                    <h:outputLabel value="Nombre"
-                                   for="nombre"
-                                   />
-                    <div class="col-sm-3">
-                        <h:inputText id="nombre" label="nombre" required="true"
-                                     value="#{clienteManaged.clienteEditar.nombre}"
-                                   
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                                                                
-                    </div>
-                </div>
-                
-                    <h:outputLabel value="Correo"
-                                   for="correo"
-                                   />
-                    <div class="col-sm-3">
-                        <h:inputText id="correo" label="correo" required="true"
-                                     value="#{clienteManaged.clienteEditar.correo}"
-                                   
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                                                                   
-                    </div>
-                </div>
-                
-                    <h:outputLabel value="Telefono"
-                                   for="telefono"
-                                   />
-                    <div class="col-sm-3">
-                        <h:inputText id="telefono" label="telefono" required="true"
-                                     value="#{clienteManaged.clienteEditar.telefono}"
-                                   
-                                     requiredMessage="Campo requerido">
-                        </h:inputText>
-                                                                  
-                    </div>
-                </div>
-                <div style="text-align: center;">
-                    <h:commandButton id="tupla" value="Guardar" 
-                                     action="#{clienteManaged.editarCliente()}"
-                                  />
-                </div>
+
+
+            <h:outputLabel value="IdCliente"
+                           for="id" 
+                           />
+
+            <h:inputText id="id" label="id" required="true"
+                         value="#{clienteManaged.clienteEditar.idCliente}"
+
+                         requiredMessage="Campo requerido">
+            </h:inputText>
+
+
+
+
+            <h:outputLabel value="Nombre"
+                           for="nombre"
+                           />
+            <div class="col-sm-3">
+                <h:inputText id="nombre" label="nombre" required="true"
+                             value="#{clienteManaged.clienteEditar.nombre}"
+
+                             requiredMessage="Campo requerido">
+                </h:inputText>
+
+            </div>
+
+            <h:outputLabel value="Correo"
+                           for="correo"
+                           />
+            <div class="col-sm-3">
+                <h:inputText id="correo" label="correo" required="true"
+                             value="#{clienteManaged.clienteEditar.correo}"
+
+                             requiredMessage="Campo requerido">
+                </h:inputText>
+
+            </div>
+
+            <h:outputLabel value="Telefono"
+                           for="telefono"
+                           />
+            <div class="col-sm-3">
+                <h:inputText id="telefono" label="telefono" required="true"
+                             value="#{clienteManaged.clienteEditar.telefono}"
+
+                             requiredMessage="Campo requerido">
+                </h:inputText>
+
+            </div>
+
+            <div style="text-align: center;">
+                <h:commandButton id="tupla" value="Guardar" 
+                                 action="#{clienteManaged.editarCliente()}"/>
             </div>
         </h:form>
     </ui:define>

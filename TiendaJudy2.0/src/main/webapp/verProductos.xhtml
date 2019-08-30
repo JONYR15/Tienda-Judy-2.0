@@ -30,6 +30,18 @@
             <p:column headerText="Precio Venta">
                 <h:outputText value="#{producto.precioVenta}"/>
             </p:column>
+            <p:column headerText="Acciones">
+                <p:link outcome="editarCliente.xhtml?faces-redirect=true">
+                    EDITAR
+                    <f:param  value="#{producto.idProducto}" name="id"/> 
+                </p:link>
+            </p:column>
+            <!--p:column headerText="Acciones">
+                <p:link outcome="">
+                    ELIMINAR
+                    <f:param  value="#{producto.idProducto}" name="id"/> 
+                </p:link>
+            </p:column-->
         </p:dataTable>     
     </ui:define>     
 </ui:composition>
