@@ -17,7 +17,7 @@
                         <p:outputLabel value="idEmpleado" for="id"/>
                         <br/>
                         <p:inputText id="id" label="id" required="true" value="#{empleadoManaged.empleado.idEmpleado}" requiredMessage="Campo requerido">
-                            <!--p:ajax event="blur" process="id" update="formulario" listener="#{empleadoManaged.validarId()}"/-->
+                            <p:ajax event="blur" process="id" update="formulario" listener="#{empleadoManaged.validarId()}"/>
                         </p:inputText>
                     </p:panelGrid>
                     <p:panelGrid>

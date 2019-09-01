@@ -9,71 +9,61 @@
 
     <ui:define name="content">
         <div class="card card-w-title resolution-center ui-fluid" style="max-width: 500px">
-            <h2>Editar Empleado</h2>
+            <h2>Eliminar Empleado</h2>
+            <p>Esta es la informacion relacionada al empleado</p>
             <h:form id="formulario">
                 <p:growl id="growl" life="1000" showDetail="true" sticky="true" />  
                 <p:panelGrid>
                     <p:panelGrid>
                         <p:outputLabel value="IdEmpleado"
-                                       for="id" 
-                                       />
+                                       for="id"/>
                         <br/>
                         <p:inputText id="id" label="id" required="true"
                                      disabled="true"
-                                     value="#{empleadoManaged.empleadoEditar.idEmpleado}"
-                                     requiredMessage="Campo requerido">
+                                     value="#{empleadoManaged.empleadoEditar.idEmpleado}">
                         </p:inputText>
                     </p:panelGrid>
                     <p:panelGrid>
                         <p:outputLabel value="Nombre"
-                                       for="nombre"
-                                       />
+                                       for="nombre"/>
                         <br/>
                         <p:inputText id="nombre" label="nombre" required="true"
                                      value="#{empleadoManaged.empleadoEditar.nombre}"
-
-                                     requiredMessage="Campo requerido">
+                                     disabled="true">
                         </p:inputText>
                     </p:panelGrid>
                     <p:panelGrid>
                         <p:outputLabel value="Telefono"
-                                       for="telefono"
-                                       />
+                                       for="telefono"/>
                         <br/>
                         <p:inputText id="telefono" label="telefono" required="true"
                                      value="#{empleadoManaged.empleadoEditar.telefono}"
-
-                                     requiredMessage="Campo requerido">
+                                     disabled="true">
                         </p:inputText>
                     </p:panelGrid>
                     <p:panelGrid>
                         <p:outputLabel value="Correo"
-                                       for="correo"
-                                       />
+                                       for="correo"/>
                         <br/>
                         <p:inputText id="correo" label="correo" required="true"
                                      value="#{empleadoManaged.empleadoEditar.correo}"
-
-                                     requiredMessage="Campo requerido">
+                                     disabled="true">
                         </p:inputText>
                     </p:panelGrid>
                     <p:panelGrid>
                         <p:outputLabel value="Salario"
-                                       for="salario"
-                                       />
+                                       for="salario"/>
                         <br/>
                         <p:inputText id="salario" label="salario" required="true"
                                      value="#{empleadoManaged.empleadoEditar.salario}"
-
-                                     requiredMessage="Campo requerido">
+                                     disabled="true">
                         </p:inputText>
                     </p:panelGrid>
                 </p:panelGrid>
                 <br/>
                 <br/>
-                <p:commandButton id="tupla" value="Editar" update="formulario"
-                                 action="#{empleadoManaged.editarEmpleado()}"
-                                 />
+                <p:commandButton id="tupla" value="Eliminar" update="formulario"
+                                 action="#{empleadoManaged.eliminarEmpleado()}"/>
             </h:form>
         </div>
     </ui:define>

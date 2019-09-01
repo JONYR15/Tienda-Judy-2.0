@@ -88,32 +88,61 @@ public class EmpleadoManaged implements Serializable {
         if (empleado != null) {
             if (empleadoDAO.buscarEmpleado(empleado.getIdEmpleado()) == null) {
                 empleadoDAO.createEmpleado(empleado);
+                try {
+                    FacesContext contex = FacesContext.getCurrentInstance();
+                    contex.getExternalContext().redirect("verEmpleado.xhtml");
+                } catch (Exception e) {
+                    FacesContext context = FacesContext.getCurrentInstance();
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo cargar la pagina"));
+                }
             } else {
-
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo crear el empleado"));
             }
-
         }
     }
 
     public void editarEmpleado() {
         if (empleadoEditar != null) {
             Empleado eSinEditar = empleadoDAO.buscarEmpleado(empleadoEditar.getIdEmpleado());
-
             if (eSinEditar != null) {
                 if (Objects.equals(eSinEditar.getNombre(), empleadoEditar.getNombre())
                         & Objects.equals(eSinEditar.getCorreo(), empleadoEditar.getCorreo())
                         & Objects.equals(eSinEditar.getTelefono(), empleadoEditar.getTelefono())
                         & Objects.equals(eSinEditar.getSalario(), empleadoEditar.getSalario())) {
                     FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "El empleado "+empleadoEditar.getNombre()+" no ha sufrido cambios"));
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "El empleado " + empleadoEditar.getNombre() + " no ha sufrido cambios"));
                 } else {
-                    empleadoDAO.editarEmpleado(empleadoEditar);
                     FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "El empleado "+empleadoEditar.getIdEmpleado()+" editado correctamente: "));
-
-                    empleadoEditar = new Empleado();
+                    try {
+                        empleadoDAO.editarEmpleado(empleadoEditar);
+                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "El empleado " + empleadoEditar.getIdEmpleado() + " editado correctamente: "));
+                        context.getExternalContext().redirect("verEmpleado.xhtml");
+                        empleadoEditar = new Empleado();
+                    } catch (Exception e) {
+                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVISO", "El empleado " + empleadoEditar.getIdEmpleado() + " no se ha editado correctamente: "));
+                    }
                 }
             }
         }
     }
+
+    public void eliminarEmpleado() {
+        if (empleadoEditar != null) {
+            try {
+                Empleado empleadoEliminar = empleadoDAO.buscarEmpleado(empleadoEditar.getIdEmpleado());
+                empleadoDAO.eliminarEmpleado(empleadoEliminar);
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.getExternalContext().redirect("verEmpleado.xhtml");
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVISO!", "Empleado eliminado con exito"));
+            } catch (Exception e) {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo cargar la pagina"));
+            }
+        } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo eliminar el empleado"));
+        }
+    }
+
 }

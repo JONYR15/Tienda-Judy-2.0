@@ -33,6 +33,10 @@
                             EDITAR
                             <f:param  value="#{empleado.idEmpleado}" name="id"/> 
                         </p:link>
+                        <p:link outcome="eliminarEmpleado.xhtml?faces-redirect=true">
+                            <p>  </p>ELIMINAR
+                            <f:param  value="#{empleado.idEmpleado}" name="id"/> 
+                        </p:link>
                     </p:column>
                 </p:dataTable>
             </h:form>
