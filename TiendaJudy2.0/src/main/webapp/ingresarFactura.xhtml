@@ -20,9 +20,9 @@
                             <p:ajax event="blur" process="id" update="formulario" listener="#{clienteManaged.validarId()}"/>
                         </p:inputText>
                     </p:panelGrid>
-                    
+
                     <p:panelGrid>
-                        <p:outputLabel value="Nombre" for="nombre"/>
+                        <p:outputLabel value="Nombre"  for="nombre"/>
                         <br/>
                         <p:inputText id="nombre" label="nombre" required="true" value="#{clienteManaged.cliente.nombre}" requiredMessage="Campo requerido"/>                                     
                     </p:panelGrid>

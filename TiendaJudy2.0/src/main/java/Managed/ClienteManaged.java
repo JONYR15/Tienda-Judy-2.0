@@ -90,6 +90,7 @@ public class ClienteManaged implements Serializable {
             if (clienteDAO.buscarCliente(cliente.getIdCliente()) == null) {
                 clienteDAO.createCliente(cliente);
                 cliente = new Cliente();
+                
             } else {
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Ya existe un cliente con el ID: " + cliente.getIdCliente()));
@@ -97,19 +98,23 @@ public class ClienteManaged implements Serializable {
         }
     }
 
+    
+    
     public void editarCliente() {
         if (clienteEditar != null) {
             Cliente cSinEditar = clienteDAO.buscarCliente(clienteEditar.getIdCliente());
 
             if (cSinEditar != null) {
-                if (Objects.equals(cSinEditar.getNombre(), clienteEditar.getNombre())) {
+                if (Objects.equals(cSinEditar.getNombre(), clienteEditar.getNombre())
+                    & Objects.equals(cSinEditar.getCorreo(),clienteEditar.getCorreo())
+                        & Objects.equals(cSinEditar.getTelefono(),clienteEditar.getTelefono())) {
                     FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "Cliente no ha sufrido cambios" + clienteEditar.getIdCliente()));
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "el cliente con el numero de cedula"+clienteEditar.getIdCliente()+" no ha sufrido cambios" ));
                 } else {
                     clienteDAO.editarCliente(clienteEditar);
 
                     FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "Cliente Editado correctamente: " + clienteEditar.getIdCliente()));
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "El cliente con numero de cedula "+clienteEditar.getIdCliente()+" editado correctamente: "));
                     
                     
                     clienteEditar = new Cliente();  

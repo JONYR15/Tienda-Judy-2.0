@@ -9,6 +9,7 @@ import Dao.EmpleadoDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -72,7 +73,7 @@ public class EmpleadoManaged implements Serializable {
     }
 
     public void validarId() {
-        if (empleado.getIdEmpleado()!= null) {
+        if (empleado.getIdEmpleado() != null) {
             if (empleadoDAO.buscarEmpleado(empleado.getIdEmpleado()) != null) {
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Ya existe un empleado con el ID: " + empleado.getIdEmpleado()));
@@ -95,11 +96,24 @@ public class EmpleadoManaged implements Serializable {
     }
 
     public void editarEmpleado() {
-        if (empleado != null) {
-            empleadoDAO.editarEmpleado(empleado);
+        if (empleadoEditar != null) {
+            Empleado eSinEditar = empleadoDAO.buscarEmpleado(empleadoEditar.getIdEmpleado());
+
+            if (eSinEditar != null) {
+                if (Objects.equals(eSinEditar.getNombre(), empleadoEditar.getNombre())
+                        & Objects.equals(eSinEditar.getCorreo(), empleadoEditar.getCorreo())
+                        & Objects.equals(eSinEditar.getTelefono(), empleadoEditar.getTelefono())
+                        & Objects.equals(eSinEditar.getSalario(), empleadoEditar.getSalario())) {
+                    FacesContext context = FacesContext.getCurrentInstance();
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "El empleado "+empleadoEditar.getNombre()+" no ha sufrido cambios"));
+                } else {
+                    empleadoDAO.editarEmpleado(empleadoEditar);
+                    FacesContext context = FacesContext.getCurrentInstance();
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "El empleado "+empleadoEditar.getIdEmpleado()+" editado correctamente: "));
+
+                    empleadoEditar = new Empleado();
+                }
+            }
         }
     }
-
-    
-    
 }

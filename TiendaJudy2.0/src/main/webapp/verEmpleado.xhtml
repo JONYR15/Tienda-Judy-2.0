@@ -7,36 +7,36 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <p:dataTable var="empleado" value="#{empleadoManaged.empleados}"
-                     rows="10" paginator="true">
-            <p:column headerText="ID Empleado">
-                <h:outputText value="#{empleado.idEmpleado}"/>
-            </p:column>
-            <p:column headerText="Nombre">
-                <h:outputText value="#{empleado.nombre}"/>
-            </p:column>
-            <p:column headerText="Telefono">
-                <h:outputText value="#{empleado.telefono}"/>
-            </p:column>
-            <p:column headerText="Correo">
-                <h:outputText value="#{empleado.correo}"/>
-            </p:column>
-            <p:column headerText="Salario">
-                <h:outputText value="#{empleado.salario}"/>
-            </p:column>
-            <p:column headerText="Acciones">
-                <p:link outcome="editarEmpleado.xhtml?faces-redirect=true">
-                    EDITAR
-                    <f:param  value="#{empleado.idEmpleado}" name="id"/> 
-                </p:link>
-            </p:column>
-            <!--p:column headerText="Acciones">
-                <p:link outcome="">
-                    ELIMINAR
-                    <f:param  value="#{empleado.idEmpleado}" name="id"/> 
-                </p:link>
-            </p:column-->
-        </p:dataTable>     
+        <div class="card card-w-title resolution-center ui-fluid">
+            <h2>Empleados</h2>
+            <h:form id="formulario">
+                <p:growl id="growl" life="1000" showDetail="true" sticky="true" /> 
+                <p:dataTable var="empleado" value="#{empleadoManaged.empleados}"
+                             rows="10" paginator="true">
+                    <p:column headerText="ID Empleado">
+                        <h:outputText value="#{empleado.idEmpleado}"/>
+                    </p:column>
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{empleado.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Telefono">
+                        <h:outputText value="#{empleado.telefono}"/>
+                    </p:column>
+                    <p:column headerText="Correo">
+                        <h:outputText value="#{empleado.correo}"/>
+                    </p:column>
+                    <p:column headerText="Salario">
+                        <h:outputText value="#{empleado.salario}"/>
+                    </p:column>
+                    <p:column headerText="Acciones">
+                        <p:link outcome="editarEmpleado.xhtml?faces-redirect=true">
+                            EDITAR
+                            <f:param  value="#{empleado.idEmpleado}" name="id"/> 
+                        </p:link>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
     </ui:define>     
 </ui:composition>
 

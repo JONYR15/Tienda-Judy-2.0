@@ -15,20 +15,22 @@
                 <p:panelGrid>
                     <p:panelGrid>
                         <p:outputLabel value="idEmpleado" for="id"/>
-
-                        <p:inputText id="id" label="id" required="true" value="#{empleadoManaged.empleado.idEmpleado}" requiredMessage="Campo requerido"/>
+                        <br/>
+                        <p:inputText id="id" label="id" required="true" value="#{empleadoManaged.empleado.idEmpleado}" requiredMessage="Campo requerido">
+                            <!--p:ajax event="blur" process="id" update="formulario" listener="#{empleadoManaged.validarId()}"/-->
+                        </p:inputText>
                     </p:panelGrid>
-
                     <p:panelGrid>
                         <p:outputLabel value="Nombre" for="nombre"/>
+                        <br/>
                         <p:inputText id="nombre" label="nombre" required="true" value="#{empleadoManaged.empleado.nombre}" requiredMessage="Campo requerido"/>
                     </p:panelGrid>
-
                     <p:panelGrid>
                         <p:outputLabel value="Telefono" for="telefono" />
+                        <br/>
                         <p:inputText id="telefono" label="telefono" required="true" value="#{empleadoManaged.empleado.telefono}" requiredMessage="Campo requerido"/>
                     </p:panelGrid>
-
+                    
                     <p:panelGrid>
                         <p:outputLabel value="Correo" for="correo"/>
                         <p:inputText id="correo" label="correo" required="true" value="#{empleadoManaged.empleado.correo}"  requiredMessage="Campo requerido"/>
@@ -40,6 +42,7 @@
                         </p:inputText>
                     </p:panelGrid>
                 </p:panelGrid>
+                
                 <br/>
                 <br/>
 
