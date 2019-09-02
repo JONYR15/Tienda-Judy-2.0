@@ -1,3 +1,4 @@
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -8,18 +9,18 @@
 
     <ui:define name="content">
         <div class="card card-w-title resolution-center ui-fluid" style="max-width: 500px">
-            <h2>Editar Empleado</h2>
+            <h2>Editar Cliente</h2>
             <h:form id="formulario">
                 <p:growl id="growl" life="1000" showDetail="true" sticky="true" />  
                 <p:panelGrid>
                     <p:panelGrid>
-                        <p:outputLabel value="IdEmpleado"
+                        <p:outputLabel value="IdCliente"
                                        for="id" 
                                        />
                         <br/>
                         <p:inputText id="id" label="id" required="true"
                                      disabled="true"
-                                     value="#{empleadoManaged.empleadoEditar.idEmpleado}"
+                                     value="#{clienteManaged.clienteEditar.idCliente}"
                                      requiredMessage="Campo requerido">
                         </p:inputText>
                     </p:panelGrid>
@@ -31,18 +32,8 @@
                                        />
                         <br/>
                         <p:inputText id="nombre" label="nombre" required="true"
-                                     value="#{empleadoManaged.empleadoEditar.nombre}"
-
-                                     requiredMessage="Campo requerido">
-                        </p:inputText>
-                    </p:panelGrid>
-                    <p:panelGrid>
-                        <p:outputLabel value="Telefono"
-                                       for="telefono"
-                                       />
-                        <br/>
-                        <p:inputText id="telefono" label="telefono" required="true"
-                                     value="#{empleadoManaged.empleadoEditar.telefono}"
+                                     disabled="true"
+                                     value="#{clienteManaged.clienteEditar.nombre}"
 
                                      requiredMessage="Campo requerido">
                         </p:inputText>
@@ -53,18 +44,20 @@
                                        />
                         <br/>
                         <p:inputText id="correo" label="correo" required="true"
-                                     value="#{empleadoManaged.empleadoEditar.correo}"
+                                     disabled="true"
+                                     value="#{clienteManaged.clienteEditar.correo}"
 
                                      requiredMessage="Campo requerido">
                         </p:inputText>
                     </p:panelGrid>
                     <p:panelGrid>
-                        <p:outputLabel value="Salario"
-                                       for="salario"
+                        <p:outputLabel value="Telefono"
+                                       for="telefono"
                                        />
                         <br/>
-                        <p:inputText id="salario" label="salario" required="true"
-                                     value="#{empleadoManaged.empleadoEditar.salario}"
+                        <p:inputText id="telefono" label="telefono" required="true"
+                                     disabled="true"
+                                     value="#{clienteManaged.clienteEditar.telefono}"
 
                                      requiredMessage="Campo requerido">
                         </p:inputText>
@@ -72,9 +65,9 @@
                 </p:panelGrid>
                 <br/>
                 <br/>
-                <p:commandButton id="tupla1" value="Editar" update="formulario"
-                                 action="#{empleadoManaged.editarEmpleado()}"
-                                 />
+                <p:commandButton id="tupla" value="Eliminar" update="formulario"
+                                 action="#{clienteManaged.eliminarCliente()}"
+                                  />
             </h:form>
         </div>
     </ui:define>
