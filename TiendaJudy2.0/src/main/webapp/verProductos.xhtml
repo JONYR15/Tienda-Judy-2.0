@@ -35,13 +35,11 @@
                     EDITAR
                     <f:param  value="#{producto.idProducto}" name="id"/> 
                 </p:link>
-            </p:column>
-            <!--p:column headerText="Acciones">
-                <p:link outcome="">
-                    ELIMINAR
+                <p:link outcome="eliminarProductos.xhtml?faces-redirect=true">
+                    <br/>ELIMINAR
                     <f:param  value="#{producto.idProducto}" name="id"/> 
                 </p:link>
-            </p:column-->
+            </p:column>
         </p:dataTable>     
     </ui:define>     
 </ui:composition>

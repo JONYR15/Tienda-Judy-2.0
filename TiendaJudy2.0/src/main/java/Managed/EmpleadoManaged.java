@@ -7,7 +7,6 @@ package Managed;
 
 import Dao.EmpleadoDAO;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.PostConstruct;
@@ -16,6 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.apache.commons.lang3.StringUtils;
 import model.Empleado;
 
 @Named
@@ -51,7 +51,7 @@ public class EmpleadoManaged implements Serializable {
 
     public Empleado getEmpleadoEditar() {
         String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-        if (id != null || !"".equals(id)) {
+        if (!StringUtils.isEmpty(id)) {
             empleadoEditar = empleadoDAO.buscarEmpleado(Integer.parseInt(id));
         }
         return empleadoEditar;
@@ -105,6 +105,7 @@ public class EmpleadoManaged implements Serializable {
     public void editarEmpleado() {
         if (empleadoEditar != null) {
             Empleado eSinEditar = empleadoDAO.buscarEmpleado(empleadoEditar.getIdEmpleado());
+            
             if (eSinEditar != null) {
                 if (Objects.equals(eSinEditar.getNombre(), empleadoEditar.getNombre())
                         & Objects.equals(eSinEditar.getCorreo(), empleadoEditar.getCorreo())
@@ -133,8 +134,8 @@ public class EmpleadoManaged implements Serializable {
                 Empleado empleadoEliminar = empleadoDAO.buscarEmpleado(empleadoEditar.getIdEmpleado());
                 empleadoDAO.eliminarEmpleado(empleadoEliminar);
                 FacesContext context = FacesContext.getCurrentInstance();
-                context.getExternalContext().redirect("verEmpleado.xhtml");
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVISO!", "Empleado eliminado con exito"));
+                context.getExternalContext().redirect("verEmpleado.xhtml"); 
             } catch (Exception e) {
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo cargar la pagina"));

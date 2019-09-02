@@ -1,3 +1,4 @@
+
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
@@ -6,20 +7,21 @@
                 template="/WEB-INF/template.xhtml"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
+
     <ui:define name="content">
         <div class="card card-w-title resolution-center ui-fluid" style="max-width: 500px">
-            <h2>Editar Empleado</h2>
+            <h2>Eliminar Productos</h2>
             <h:form id="formulario">
                 <p:growl id="growl" life="1000" showDetail="true" sticky="true" />  
                 <p:panelGrid>
                     <p:panelGrid>
-                        <p:outputLabel value="IdEmpleado"
+                        <p:outputLabel value="IdProductos"
                                        for="id" 
                                        />
                         <br/>
                         <p:inputText id="id" label="id" required="true"
                                      disabled="true"
-                                     value="#{empleadoManaged.empleadoEditar.idEmpleado}"
+                                     value="#{productoManaged.productoEditar.idProducto}"
                                      requiredMessage="Campo requerido">
                         </p:inputText>
                     </p:panelGrid>
@@ -31,40 +33,62 @@
                                        />
                         <br/>
                         <p:inputText id="nombre" label="nombre" required="true"
-                                     value="#{empleadoManaged.empleadoEditar.nombre}"
+                                     value="#{productoManaged.productoEditar.nombre}"
 
                                      requiredMessage="Campo requerido">
                         </p:inputText>
                     </p:panelGrid>
                     <p:panelGrid>
-                        <p:outputLabel value="Telefono"
-                                       for="telefono"
+                        <p:outputLabel value="Descripcion"
+                                       for="descripcion"
                                        />
                         <br/>
-                        <p:inputText id="telefono" label="telefono" required="true"
-                                     value="#{empleadoManaged.empleadoEditar.telefono}"
+                        <p:inputText id="descripcion" label="descripcion" required="true"
+                                     value="#{productoManaged.productoEditar.descripcion}"
 
                                      requiredMessage="Campo requerido">
                         </p:inputText>
                     </p:panelGrid>
                     <p:panelGrid>
-                        <p:outputLabel value="Correo"
-                                       for="correo"
+                        <p:outputLabel value="Talla"
+                                       for="talla"
                                        />
                         <br/>
-                        <p:inputText id="correo" label="correo" required="true"
-                                     value="#{empleadoManaged.empleadoEditar.correo}"
+                        <p:inputText id="talla" label="talla" required="true"
+                                     value="#{productoManaged.productoEditar.talla}"
 
                                      requiredMessage="Campo requerido">
                         </p:inputText>
                     </p:panelGrid>
                     <p:panelGrid>
-                        <p:outputLabel value="Salario"
-                                       for="salario"
+                        <p:outputLabel value="Cantidad"
+                                       for="cantidad"
                                        />
                         <br/>
-                        <p:inputText id="salario" label="salario" required="true"
-                                     value="#{empleadoManaged.empleadoEditar.salario}"
+                        <p:inputText id="cantidad" label="cantidad" required="true"
+                                     value="#{productoManaged.productoEditar.cantidad}"
+
+                                     requiredMessage="Campo requerido">
+                        </p:inputText>
+                    </p:panelGrid>
+                    <p:panelGrid>
+                        <p:outputLabel value="PrecioCompra"
+                                       for="preciocompra"
+                                       />
+                        <br/>
+                        <p:inputText id="preciocompra" label="preciocompra" required="true"
+                                     value="#{productoManaged.productoEditar.precioCompra}"
+
+                                     requiredMessage="Campo requerido">
+                        </p:inputText>
+                    </p:panelGrid>
+                    <p:panelGrid>
+                        <p:outputLabel value="PrecioVenta"
+                                       for="precioventa"
+                                       />
+                        <br/>
+                        <p:inputText id="precioventa" label="precioventa" required="true"
+                                     value="#{productoManaged.productoEditar.precioVenta}"
 
                                      requiredMessage="Campo requerido">
                         </p:inputText>
@@ -72,8 +96,8 @@
                 </p:panelGrid>
                 <br/>
                 <br/>
-                <p:commandButton id="tupla1" value="Guardar" update="formulario"
-                                 action="#{empleadoManaged.editarEmpleado()}"
+                <p:commandButton id="tupla" value="Eliminar" update="formulario"
+                                 action="#{productoManaged.eliminarProductos()}"
                                  />
             </h:form>
         </div>

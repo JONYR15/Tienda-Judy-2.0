@@ -29,9 +29,12 @@
                             EDITAR
                             <f:param  value="#{cliente.idCliente}" name="id"/> 
                         </p:link>
+                        <p:link outcome="editarCliente.xhtml?faces-redirect=true">
+                            ELIMINAR
+                            <f:param  value="#{cliente.idCliente}" name="id"/> 
+                        </p:link>
                     </p:column>
                 </p:dataTable>     
-
             </h:form>
         </div>
     </ui:define>     

@@ -88,9 +88,16 @@ public class ClienteManaged implements Serializable {
     public void crearCliente() {
         if (cliente != null) {
             if (clienteDAO.buscarCliente(cliente.getIdCliente()) == null) {
-                clienteDAO.createCliente(cliente);
+                try {
+                    clienteDAO.createCliente(cliente);
+                    FacesContext contex = FacesContext.getCurrentInstance();
+                    contex.getExternalContext().redirect("verClientes.xhtml");
+                } catch (Exception e) {
+                    FacesContext context = FacesContext.getCurrentInstance();
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo cargar la pagina"));
+                }
                 cliente = new Cliente();
-                
+
             } else {
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Ya existe un cliente con el ID: " + cliente.getIdCliente()));
@@ -98,28 +105,47 @@ public class ClienteManaged implements Serializable {
         }
     }
 
-    
-    
     public void editarCliente() {
         if (clienteEditar != null) {
             Cliente cSinEditar = clienteDAO.buscarCliente(clienteEditar.getIdCliente());
 
             if (cSinEditar != null) {
                 if (Objects.equals(cSinEditar.getNombre(), clienteEditar.getNombre())
-                    & Objects.equals(cSinEditar.getCorreo(),clienteEditar.getCorreo())
-                        & Objects.equals(cSinEditar.getTelefono(),clienteEditar.getTelefono())) {
+                        & Objects.equals(cSinEditar.getCorreo(), clienteEditar.getCorreo())
+                        & Objects.equals(cSinEditar.getTelefono(), clienteEditar.getTelefono())) {
                     FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "el cliente con el numero de cedula"+clienteEditar.getIdCliente()+" no ha sufrido cambios" ));
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "el cliente con el numero de cedula" + clienteEditar.getIdCliente() + " no ha sufrido cambios"));
                 } else {
-                    clienteDAO.editarCliente(clienteEditar);
 
                     FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "El cliente con numero de cedula "+clienteEditar.getIdCliente()+" editado correctamente: "));
-                    
-                    
-                    clienteEditar = new Cliente();  
+                    try {
+                        clienteDAO.editarCliente(clienteEditar);
+                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "El cliente con numero de cedula " + clienteEditar.getIdCliente() + " editado correctamente: "));
+                        context.getExternalContext().redirect("verClientes.xhtml");
+                    } catch (Exception e) {
+                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVISO", "El cliente " + clienteEditar.getIdCliente() + " no se ha editado correctamente: "));
+                    }
+                    clienteEditar = new Cliente();
                 }
             }
+        }
+    }
+
+    public void eliminarCliente() {
+        if (clienteEditar != null) {
+            try {
+                Cliente clienteEliminar = clienteDAO.buscarCliente(clienteEditar.getIdCliente());
+                clienteDAO.eliminarCliente(clienteEliminar);
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVISO!", "Cliente eliminado con exito"));
+                context.getExternalContext().redirect("verClientes.xhtml");
+            } catch (Exception e) {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo cargar la pagina"));
+            }
+        } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo eliminar el cliente"));
         }
     }
 

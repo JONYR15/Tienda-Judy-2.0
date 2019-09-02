@@ -17,6 +17,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.apache.commons.lang3.StringUtils;
 
 @Named
 @ViewScoped
@@ -51,7 +52,7 @@ public class ProductoManaged implements Serializable {
 
     public Producto getProductoEditar() {
         String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
-        if (id != null || !"".equals(id)) {
+        if (!StringUtils.isEmpty(id)) {
             productoEditar = productoDAO.buscarProducto(Integer.parseInt(id));
         }
         return productoEditar;
@@ -75,11 +76,31 @@ public class ProductoManaged implements Serializable {
     public void crearProducto() {
         if (producto != null) {
             if (productoDAO.buscarProducto(producto.getIdProducto()) == null) {
-                productoDAO.createProducto(producto);
+                try {
+                    productoDAO.createProducto(producto);
+                    FacesContext contex = FacesContext.getCurrentInstance();
+                    contex.getExternalContext().redirect("verProductos.xhtml");
+                } catch (Exception e) {
+                    FacesContext context = FacesContext.getCurrentInstance();
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo cargar la pagina"));
+                }
             } else {
-
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo crear el producto"));
             }
 
+        }
+    }
+
+    public void validarId() {
+        if (producto.getIdProducto()!= null) {
+            if (productoDAO.buscarProducto(producto.getIdProducto()) != null) {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Ya existe un producto con el ID: " + producto.getIdProducto()));
+            } else {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "ID disponible para usar"));
+            }
         }
     }
 
@@ -96,14 +117,36 @@ public class ProductoManaged implements Serializable {
                     FacesContext context = FacesContext.getCurrentInstance();
                     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "AVISO", "El producto " + productoEditar.getNombre() + " no ha sufrido cambios "));
                 } else {
-                    productoDAO.editarProducto(productoEditar);
-
                     FacesContext context = FacesContext.getCurrentInstance();
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "El producto " + productoEditar.getNombre() + " fue Editado correctamente: "));
-
+                    try {
+                        productoDAO.editarProducto(productoEditar);
+                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "CORRECTO", "El producto " + productoEditar.getNombre() + " fue editado correctamente: "));
+                        context.getExternalContext().redirect("verProductos.xhtml");
+                        productoEditar = new Producto();
+                    } catch (Exception e) {
+                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVISO", "El empleado " + productoEditar.getIdProducto() + " no se ha editado correctamente: "));
+                    }
                     productoEditar = new Producto();
                 }
             }
+        }
+    }
+
+    public void eliminarProductos() {
+        if (productoEditar != null) {
+            try {
+                Producto productoEliminar = productoDAO.buscarProducto(productoEditar.getIdProducto());
+                productoDAO.eliminarProducto(productoEliminar);
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.getExternalContext().redirect("verProductos.xhtml");
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "AVISO!", "Producto eliminado con exito"));
+            } catch (Exception e) {
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo cargar la pagina"));
+            }
+        } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo eliminar el producto"));
         }
     }
 
