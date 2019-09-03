@@ -47,7 +47,7 @@ public class DetalleFactura implements Serializable {
     @Column(name = "DESCRIPCION_PRODUCTO")
     private String descripcionProducto;
     @Column(name = "PRECIO")
-    private Double precio = 0D;
+    private Double precio = 10.0;
     @Column(name = "TOTAL")
     private Double total = 0D;
     @JoinColumn(name = "ID_ENCABEZADO_FACTURA", referencedColumnName = "ID_ENCABEZADO_FACTURA")
@@ -97,9 +97,6 @@ public class DetalleFactura implements Serializable {
     }
 
     public Double getTotal() {
-        if (precio != null && cantidad != null) {
-            total = precio * cantidad;
-        }
         return total;
     }
 

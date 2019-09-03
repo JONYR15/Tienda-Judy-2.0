@@ -74,6 +74,15 @@ public class EncabezadoFacturaManaged implements Serializable {
     }
 
     public DetalleFactura getDetalleFactura() {
+        if (getProducto() != null) {
+            detalleFactura = new DetalleFactura();
+            detalleFactura.setDescripcionProducto(producto.getDescripcion());
+            detalleFactura.setIdProducto(producto);
+            detalleFactura.setPrecio(producto.getPrecioVenta());
+            detalleFactura.setCantidad(1);
+            detalleFactura.getTotal();
+            producto = null;
+        }
         return detalleFactura;
     }
 
@@ -100,7 +109,7 @@ public class EncabezadoFacturaManaged implements Serializable {
             detalleFactura.setIdProducto(producto);
             detalleFactura.setPrecio(producto.getPrecioVenta());
             detalleFactura.setCantidad(1);
-            detalleFactura.getTotal();
+            detalleFactura.setTotal(detalleFactura.getPrecio() * detalleFactura.getCantidad());
         }
     }
 
