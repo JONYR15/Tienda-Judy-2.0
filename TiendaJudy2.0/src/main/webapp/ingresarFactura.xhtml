@@ -20,7 +20,7 @@
                         <p:calendar id="fecha" disabled="true" disabledWeekends="true" value="#{encabezadoFacturaManaged.encabezadoFactura.fecha}" navigator="true" pattern="dd-MMM-yyyy HH:mm:ss"  required="true" requiredMessage="Campo requerido"/>
                     </p:panelGrid>                    
 
-                    <p:panelGrid>
+                    <!--p:panelGrid>
                         <p:outputLabel value="Cliente"  for="cliente"/>
                         <br/>
                         <p:selectOneMenu filter="true" filterMatchMode="contains" converter="clienteConvertidor" id="cliente" value="#{encabezadoFacturaManaged.encabezadoFactura.idCliente}" required="true" requiredMessage="Campo Requerido" maxlength="50">
@@ -29,7 +29,7 @@
                                            itemValue="#{cliente}" itemLabel="ID: #{cliente.idCliente} - Nombre: #{cliente.nombre}" />
                             <p:ajax listener="#{encabezadoFacturaManaged.clienteSeleccionado(event)}"/>
                         </p:selectOneMenu>   
-                    </p:panelGrid>
+                    </p:panelGrid-->
 
                     <p:panelGrid>
                         <p:outputLabel value="Empleado" for="empleado"/>

@@ -17,33 +17,33 @@ import model.Empleado;
  *
  * @author toursys
  */
-@FacesConverter("empleadoConvertidor")
-public class EmpleadoConvertidor implements Converter{
-     
+@FacesConverter(value = "empleadoConvertidor", forClass = Empleado.class)
+public class EmpleadoConvertidor implements Converter {
+
     @EJB
     private EmpleadoDAO empleadoDAO;
-    
+
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        
+
         if (value == null || "".equals(value)) {
             return null;
         }
-        
+
         return empleadoDAO.buscarEmpleado(Integer.parseInt(value));
     }
-    
+
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object objValue) {
-        
+
         if (objValue == null || "".equals(objValue)) {
             return "";
         }
-        
+
         if (!(objValue instanceof Empleado)) {
             // handle error
         }
-        
+
         Empleado empleado = (Empleado) objValue;
         return String.valueOf(empleado.getIdEmpleado());
     }

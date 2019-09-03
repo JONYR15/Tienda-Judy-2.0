@@ -64,6 +64,8 @@ public class EncabezadoFacturaManaged implements Serializable {
     @PostConstruct
     public void init() {
         encabezadoFactura = new EncabezadoFactura();
+        encabezadoFactura.setIdCliente(new Cliente());
+        encabezadoFactura.setIdEmpleado(new Empleado());
         detalleFactura = new DetalleFactura();
         producto = new Producto();
     }

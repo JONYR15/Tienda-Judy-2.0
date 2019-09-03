@@ -30,7 +30,7 @@ public class ClienteConvertidor implements Converter{
             return null;
         }
         
-        return clienteDAO.buscarCliente(Integer.parseInt(value));
+        return clienteDAO.find(Integer.parseInt(value));
     }
     
     @Override

@@ -2,10 +2,21 @@
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
-        <Node id="index.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="editarCliente.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="eliminarEmpleado.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="verClientes.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="ingresarEmpleado.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="editarEmpleado.xhtml" x="400" y="300" zoom="true"/>
         <Node id="verProductos.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="verEmpleado.xhtml" x="650" y="450" zoom="true"/>
         <Node id="ingresarClientes.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="eliminarProductos.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="dashboard.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="ingresarFactura.xhtml" x="150" y="750" zoom="false"/>
+        <Node id="verFacturas.xhtml" x="900" y="300" zoom="true"/>
         <Node id="ingresarProductos.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="editarProductos.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="eliminarCliente.xhtml" x="900" y="150" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>
