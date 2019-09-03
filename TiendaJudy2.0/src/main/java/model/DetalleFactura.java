@@ -45,11 +45,11 @@ public class DetalleFactura implements Serializable {
     private String descripcionProducto;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "CANTIDAD")
-    private Double cantidad;
+    private Integer cantidad = 0;
     @Column(name = "PRECIO")
-    private Double precio;
+    private Double precio = 0D;
     @Column(name = "TOTAL")
-    private Double total;
+    private Double total = 0D;
     @JoinColumn(name = "ID_ENCABEZADO_FACTURA", referencedColumnName = "ID_ENCABEZADO_FACTURA")
     @ManyToOne(fetch = FetchType.LAZY)
     private EncabezadoFactura idEncabezadoFactura;
@@ -80,11 +80,11 @@ public class DetalleFactura implements Serializable {
         this.descripcionProducto = descripcionProducto;
     }
 
-    public Double getCantidad() {
+    public Integer getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(Double cantidad) {
+    public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
 
@@ -97,6 +97,9 @@ public class DetalleFactura implements Serializable {
     }
 
     public Double getTotal() {
+        if (precio != null && cantidad != null) {
+            total = precio * cantidad;
+        }
         return total;
     }
 
@@ -144,5 +147,5 @@ public class DetalleFactura implements Serializable {
     public String toString() {
         return "model.DetalleFactura[ idDetalleFactura=" + idDetalleFactura + " ]";
     }
-    
+
 }

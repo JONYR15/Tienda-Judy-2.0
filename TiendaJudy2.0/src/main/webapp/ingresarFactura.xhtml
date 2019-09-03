@@ -14,100 +14,131 @@
                 <p:growl id="growl" life="1000" showDetail="true" sticky="true" />  
                 <p:panelGrid>
                     <p:panelGrid>
-                        <p:outputLabel value="IdEncabezadoFactura" for="id"  />
+                        <p:outputLabel value="Id Encabezado Factura" for="id"  />
                         <br/>
-                        <p:inputText id="id" label="id" required="true" value="" requiredMessage="Campo requerido">
-                            <p:ajax event="blur" process="id" update="formulario" listener=""/>
+                        <p:inputText id="id" label="id" required="true" value="#{encabezadoFacturaManaged.encabezadoFactura.idEncabezadoFactura}" requiredMessage="Campo requerido">
+                            <p:ajax event="blur" process="id" update="formulario"/>
                         </p:inputText>
                     </p:panelGrid>
 
                     <p:panelGrid>
-                        <p:outputLabel value="Nombre"  for="nombre"/>
+                        <p:outputLabel value="Cliente"  for="cliente"/>
                         <br/>
-                        <p:inputText id="nombre" label="nombre" required="true" value="#{clienteManaged.cliente.nombre}" requiredMessage="Campo requerido"/>                                     
+                        <p:inputText id="cliente" label="Cliente" required="true" value="#{encabezadoFacturaManaged.encabezadoFactura.idCliente}" requiredMessage="Campo requerido"/>                                     
                     </p:panelGrid>
+
                     <p:panelGrid>
-                        <p:outputLabel value="Correo" for="correo"/>
+                        <p:outputLabel value="Empleado" for="empleado"/>
                         <br/>
-                        <p:inputText id="correo" label="correo" required="true" value="#{clienteManaged.cliente.correo}" requiredMessage="Campo requerido"/>
-                    </p:panelGrid>
-                    <p:panelGrid>
-                        <p:outputLabel value="Telefono" for="telefono"/>
-                        <br/>
-                        <p:inputText id="telefono" label="telefono" required="true" value="#{clienteManaged.cliente.telefono}" requiredMessage="Campo requerido"/>  
+                        <p:inputText id="empleado" label="Empleado" required="true" value="#{encabezadoFacturaManaged.encabezadoFactura.idEmpleado}" requiredMessage="Campo requerido"/>
                     </p:panelGrid>
                 </p:panelGrid>
 
                 <br/>
                 <br/>
 
-                <p:commandButton value="Guardar" action="#{clienteManaged.crearCliente()}"/>
+                <p:commandButton value="Insertar Producto" type="button" onclick="PF('detalle').show();">   
+                </p:commandButton>
+
+
+                <p:dataTable id="detalleFactura" widgetVar="detalleFactura" var="detalle" value="#{encabezadoFacturaManaged.encabezadoFactura.detalleFacturaList}" style="margin-bottom:20px">
+
+
+                    <p:column headerText="Descripcion">
+                        <p:outputLabel value="#{detalle.descripcionProducto}"/>
+                    </p:column>
+
+                    <p:column headerText="Precio Unitario">
+                        <p:outputLabel value="#{detalle.precio}"/>
+                    </p:column>
+
+                    <p:column headerText="Cantidad">
+                        <p:outputLabel value="#{detalle.cantidad}"/>
+                    </p:column>
+
+                    <p:column headerText="Total">
+                        <p:outputLabel value="#{detalle.total}"/>
+                    </p:column>
+
+                </p:dataTable>
+
+
             </h:form>
         </div>
 
+        <p:dialog header="Insertar Producto" widgetVar="detalle" width="50%">
+            <h:form>
+                <p:dataTable var="detalleFactura" value="#{productoManaged.productos}"
+                             rows="10" paginator="true">
+                    <p:column headerText="ID Producto">
+                        <h:outputText value="#{detalleFactura.idProducto}"/>
+                    </p:column>
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{detalleFactura.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Descripcion">
+                        <h:outputText value="#{detalleFactura.descripcion}"/>
+                    </p:column>
+                    <p:column headerText="Talla">
+                        <h:outputText value="#{detalleFactura.talla}"/>
+                    </p:column>
+                    <p:column headerText="Cantidad">
+                        <h:outputText value="#{detalleFactura.cantidad}"/>
+                    </p:column>
+                    <p:column headerText="Precio Compra">
+                        <h:outputText value="#{detalleFactura.precioCompra}"/>
+                    </p:column>
+                    <p:column headerText="Precio Venta">
+                        <h:outputText value="#{detalleFactura.precioVenta}"/>
+                    </p:column>
+                    <p:column headerText="Acciones">
+                        <p:commandButton value="Insertar Producto" type="button" update="cantidad" onclick="PF('cantidad').show();">       
+                            <f:param  value="#{detalleFactura.idProducto}" name="id"/> 
+                            <p:ajax listener="#{encabezadoFacturaManaged.setProductoADetalle()}"/>
+                        </p:commandButton>
+                    </p:column>
+                </p:dataTable>  
+            </h:form>
+        </p:dialog>
 
+        <p:dialog header="Cantidad del detalleFactura" widgetVar="cantidad">
 
-        <h:form id="form">
-            <p:growl id="msgs" showDetail="true"/>
+            <h:form id="cantidad">
+                <p:panelGrid>
 
-            <p:dataTable id="cars1" widgetVar="cars1" var="car" value="#{dtAddRowView.cars1}" editable="true" style="margin-bottom:20px">
-                <f:facet name="header">
-                    Row Editing with add functionality
-                </f:facet>
+                    <p:panelGrid>
+                        <p:outputLabel value="Descripcion" for="descripcion" />
+                        <br/>
+                        <p:inputText id="descripcion" label="descripcion" readonly="true" required="true" value="#{encabezadoFacturaManaged.detalleFactura.descripcionProducto}" requiredMessage="Campo requerido"/>
+                    </p:panelGrid>
 
-                <p:ajax event="rowEdit" listener="#{dtAddRowView.onRowEdit}" update=":form:msgs" />
-                <p:ajax event="rowEditCancel" listener="#{dtAddRowView.onRowCancel}" update=":form:msgs" />
-                <p:column headerText="Id">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{car.id}" /></f:facet>
-                        <f:facet name="input"><p:inputText id="modelInput" value="#{car.id}" style="width:100%"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
+                    <p:panelGrid>
+                        <p:outputLabel value="Precio" for="precio"/>
+                        <br/>
+                        <p:inputText id="precio" label="Precio" required="true" value="#{encabezadoFacturaManaged.detalleFactura.precio}" readonly="true" requiredMessage="Campo requerido"/>
+                    </p:panelGrid>
 
-                <p:column headerText="Year">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
-                        <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
-                    </p:cellEditor>
-                </p:column>
+                    <p:panelGrid>
+                        <p:outputLabel value="Cantidad" for="cantidad"/>
+                        <br/>
+                        <p:inputText id="cantidad" label="cantidad" required="true" value="#{encabezadoFacturaManaged.detalleFactura.cantidad}" requiredMessage="Campo requerido">
+                            <p:ajax event="change" update="total"/>
+                        </p:inputText>
+                    </p:panelGrid>
 
-                <p:column headerText="Brand">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{car.brand}" /></f:facet>
-                        <f:facet name="input">
-                            <h:selectOneMenu value="#{car.brand}" style="width:100%">
-                                <f:selectItems value="#{dtEditView.brands}" var="man" itemLabel="#{man}" itemValue="#{man}" />
-                            </h:selectOneMenu>
-                        </f:facet>
-                    </p:cellEditor>
-                </p:column>
+                    <p:panelGrid>
+                        <p:outputLabel value="Total" for="total"/>
+                        <br/>
+                        <p:inputText id="total" label="Total" required="true" value="#{encabezadoFacturaManaged.detalleFactura.total}" readonly="true" requiredMessage="Campo requerido"/>
+                    </p:panelGrid>
+                </p:panelGrid>
 
-                <p:column headerText="Color">
-                    <p:cellEditor>
-                        <f:facet name="output"><h:outputText value="#{car.color}" /></f:facet>
-                        <f:facet name="input">
-                            <h:selectOneMenu value="#{car.color}" style="width:100%">
-                                <f:selectItems value="#{dtEditView.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
-                            </h:selectOneMenu>
-                        </f:facet>
-                    </p:cellEditor>
-                </p:column>
+                <br/>
+                <br/>
 
-                <p:column style="width:32px">
-                    <p:rowEditor />
-                </p:column>
-            </p:dataTable>
-
-            <div class="ui-g">
-                <div class="ui-g-12">
-                    <p:commandButton value="Add new row" styleClass="ui-priority-primary" process="@this" update=":form:msgs"
-                                     action="#{dtAddRowView.onAddNew()}" oncomplete="PF('cars1').addRow();"/>
-                </div>
-            </div>
-
-        </h:form>
-
-
+                <p:commandButton value="Agregar" update="cantidad,formulario" oncomplete="if (!args.validationFailed){PF('detalleFactura').filter();PF('cantidad').show();PF('detalle').show();}" action="#{encabezadoFacturaManaged.agregarDetalle()}"/>
+            </h:form>
+        </p:dialog>
 
 
 
