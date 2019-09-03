@@ -23,8 +23,11 @@
                     <p:panelGrid>
                         <p:outputLabel value="Cliente"  for="cliente"/>
                         <br/>
-                        <p:inputText id="cliente" label="Cliente" required="true" value="#{encabezadoFacturaManaged.encabezadoFactura.idCliente}" requiredMessage="Campo requerido"/>                                     
-                    </p:panelGrid>
+                        <p:selectOneMenu filter="true" filterMatchMode="contains" converter="clienteConvertidor" id="cliente" value="#{encabezadoFacturaManaged.encabezadoFactura.idCliente}" required="true" requiredMessage="#{msg['COMPANY.BANK']} #{msg['REQUIRED.FIELD']}" maxlength="50">
+                            <f:selectItem itemLabel="Seleccione un Cliente" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{encabezadoFacturaManaged.getClientes}" var="cliente" 
+                                           itemValue="#{cliente}" itemLabel="ID: #{cliente.idCliente} - Nombre: #{cliente.nombre}" />
+                        </p:selectOneMenu>   </p:panelGrid>
 
                     <p:panelGrid>
                         <p:outputLabel value="Empleado" for="empleado"/>
