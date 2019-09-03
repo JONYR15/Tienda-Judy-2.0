@@ -34,6 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "DetalleFactura.findByTotal", query = "SELECT d FROM DetalleFactura d WHERE d.total = :total")})
 public class DetalleFactura implements Serializable {
 
+    @Column(name = "CANTIDAD")
+    private Integer cantidad;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -43,9 +46,6 @@ public class DetalleFactura implements Serializable {
     @Size(max = 50)
     @Column(name = "DESCRIPCION_PRODUCTO")
     private String descripcionProducto;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "CANTIDAD")
-    private Double cantidad;
     @Column(name = "PRECIO")
     private Double precio;
     @Column(name = "TOTAL")
@@ -80,13 +80,6 @@ public class DetalleFactura implements Serializable {
         this.descripcionProducto = descripcionProducto;
     }
 
-    public Double getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Double cantidad) {
-        this.cantidad = cantidad;
-    }
 
     public Double getPrecio() {
         return precio;
@@ -143,6 +136,14 @@ public class DetalleFactura implements Serializable {
     @Override
     public String toString() {
         return "model.DetalleFactura[ idDetalleFactura=" + idDetalleFactura + " ]";
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
     
 }
