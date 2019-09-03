@@ -33,7 +33,7 @@
 
                     <p:rowExpansion>
 
-                        <p:dataTable id="detalleFactura" widgetVar="detalleFactura" var="detalle" value="#{encabezadoFacturaManaged.encabezadoFactura.detalleFacturaList}" style="margin-bottom:20px">
+                        <p:dataTable id="detalleFactura" widgetVar="detalleFactura" var="detalle" value="#{factura.detalleFacturaList}" style="margin-bottom:20px">
 
                             <p:column headerText="Descripcion">
                                 <p:outputLabel value="#{detalle.descripcionProducto}"/>
