@@ -24,7 +24,7 @@
                         <p:outputLabel value="Cliente"  for="cliente"/>
                         <br/>
                         <p:selectOneMenu filter="true" filterMatchMode="contains" converter="clienteConvertidor" id="cliente" value="#{encabezadoFacturaManaged.encabezadoFactura.idCliente}" required="true" requiredMessage="Campo Requerido" maxlength="50">
-                            <f:selectItem itemLabel="Seleccione un Cliente" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Seleccione un Cliente" itemValue="" noSelectionOption="true" itemDisabled="true" />
                             <f:selectItems value="#{encabezadoFacturaManaged.clientes}" var="cliente" 
                                            itemValue="#{cliente}" itemLabel="ID: #{cliente.idCliente} - Nombre: #{cliente.nombre}" />
                             <p:ajax listener="#{encabezadoFacturaManaged.clienteSeleccionado(event)}"/>
@@ -35,7 +35,7 @@
                         <p:outputLabel value="Empleado" for="empleado"/>
                         <br/>
                         <p:selectOneMenu filter="true" filterMatchMode="contains" converter="empleadoConvertidor" id="empleado" value="#{encabezadoFacturaManaged.encabezadoFactura.idEmpleado}" required="true" requiredMessage="Campo Requerido" maxlength="50">
-                            <f:selectItem itemLabel="Seleccione un empleado" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Seleccione un empleado" itemValue="" itemDisabled="true" />
                             <f:selectItems value="#{encabezadoFacturaManaged.empleados}" var="empleado" 
                                            itemValue="#{empleado}" itemLabel="ID: #{empleado.idEmpleado} - Nombre: #{empleado.nombre}" />
                             <p:ajax listener="#{encabezadoFacturaManaged.empleadoSeleccionado(event)}"/>
