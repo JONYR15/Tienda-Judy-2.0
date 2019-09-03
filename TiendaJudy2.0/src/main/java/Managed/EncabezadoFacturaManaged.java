@@ -17,6 +17,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import model.Cliente;
@@ -51,7 +52,7 @@ public class EncabezadoFacturaManaged implements Serializable {
 
     @EJB
     private ClienteDAO clienteDAO;
-    
+
     @EJB
     private EmpleadoDAO empleadoDAO;
 
@@ -76,7 +77,20 @@ public class EncabezadoFacturaManaged implements Serializable {
     }
 
     public List<EncabezadoFactura> getEncabezadoFacturaList() {
+        encabezadoFacturaList = encabezadoFacturaDAO.obtenerEncabezadoFacturas();
         return encabezadoFacturaList;
+    }
+    
+     public void clienteSeleccionado(ValueChangeEvent event) {
+        if (event != null) {
+            encabezadoFactura.setIdCliente((Cliente) event.getNewValue());
+        }
+    }
+     
+      public void empleadoSeleccionado(ValueChangeEvent event) {
+        if (event != null) {
+            encabezadoFactura.setIdEmpleado((Empleado) event.getNewValue());
+        }
     }
 
     public void setEncabezadoFacturaList(List<EncabezadoFactura> encabezadoFacturaList) {
@@ -106,7 +120,7 @@ public class EncabezadoFacturaManaged implements Serializable {
     public List<Cliente> getClientes() {
         return clienteDAO.obtenerClientes();
     }
-    
+
     public List<Empleado> getEmpleados() {
         return empleadoDAO.obtenerEmpleados();
     }

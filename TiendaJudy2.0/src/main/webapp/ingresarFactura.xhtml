@@ -17,7 +17,7 @@
                     <p:panelGrid>
                         <p:outputLabel value="Fecha"  for="fecha"/>
                         <br/>
-                        <p:calendar id="fecha"  value="#{encabezadoFacturaManaged.encabezadoFactura.fecha}" navigator="true" pattern="dd-MMM-yyyy HH:mm:ss"  required="true" requiredMessage="Campo requerido"/>
+                        <p:calendar id="fecha" disabled="true" disabledWeekends="true" value="#{encabezadoFacturaManaged.encabezadoFactura.fecha}" navigator="true" pattern="dd-MMM-yyyy HH:mm:ss"  required="true" requiredMessage="Campo requerido"/>
                     </p:panelGrid>                    
 
                     <p:panelGrid>
@@ -27,6 +27,7 @@
                             <f:selectItem itemLabel="Seleccione un Cliente" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{encabezadoFacturaManaged.clientes}" var="cliente" 
                                            itemValue="#{cliente}" itemLabel="ID: #{cliente.idCliente} - Nombre: #{cliente.nombre}" />
+                            <p:ajax listener="#{encabezadoFacturaManaged.clienteSeleccionado(event)}"/>
                         </p:selectOneMenu>   
                     </p:panelGrid>
 
@@ -37,6 +38,7 @@
                             <f:selectItem itemLabel="Seleccione un empleado" itemValue="" noSelectionOption="true" />
                             <f:selectItems value="#{encabezadoFacturaManaged.empleados}" var="empleado" 
                                            itemValue="#{empleado}" itemLabel="ID: #{empleado.idEmpleado} - Nombre: #{empleado.nombre}" />
+                            <p:ajax listener="#{encabezadoFacturaManaged.empleadoSeleccionado(event)}"/>
                         </p:selectOneMenu>   
                     </p:panelGrid>
                 </p:panelGrid>
@@ -69,6 +71,10 @@
 
                 </p:dataTable>
 
+                <br/>
+                <br/>
+                
+                <p:commandButton value="Facturar" update="formulario" action="#{encabezadoFacturaManaged.crearFactura()}"/>
 
             </h:form>
         </div>
@@ -143,7 +149,7 @@
                 <br/>
                 <br/>
 
-                <p:commandLink value="Agregar" update="cantidad,formulario" oncomplete="if (!args.validationFailed){PF('detalleFactura').filter();PF('cantidad').hide();}" action="#{encabezadoFacturaManaged.agregarDetalle()}"/>
+                <p:commandLink value="Agregar" update="cantidad,:formulario:detalleFactura" oncomplete="if (!args.validationFailed){PF('detalleFactura').filter();PF('cantidad').hide();}" action="#{encabezadoFacturaManaged.agregarDetalle()}"/>
             </h:form>
         </p:dialog>
 
