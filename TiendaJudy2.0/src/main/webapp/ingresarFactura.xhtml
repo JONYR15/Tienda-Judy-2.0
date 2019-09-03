@@ -12,14 +12,13 @@
             <h2>Crear Factura</h2>
             <h:form id="formulario">
                 <p:growl id="growl" life="1000" showDetail="true" sticky="true" />  
-                <p:panelGrid>
+                <p:panelGrid columns="1" layout="grid" style="border:0px !important; background:none;">
+
                     <p:panelGrid>
-                        <p:outputLabel value="Id Encabezado Factura" for="id"  />
+                        <p:outputLabel value="Fecha"  for="fecha"/>
                         <br/>
-                        <p:inputText id="id" label="id" required="true" value="#{encabezadoFacturaManaged.encabezadoFactura.idEncabezadoFactura}" requiredMessage="Campo requerido">
-                            <p:ajax event="blur" process="id" update="formulario"/>
-                        </p:inputText>
-                    </p:panelGrid>
+                        <p:calendar id="fecha"  value="#{encabezadoFacturaManaged.encabezadoFactura.fecha}" navigator="true" pattern="dd-MMM-yyyy HH:mm:ss"  required="true" requiredMessage="Campo requerido"/>
+                    </p:panelGrid>                    
 
                     <p:panelGrid>
                         <p:outputLabel value="Cliente"  for="cliente"/>
@@ -105,7 +104,7 @@
 
             <h:form id="cantidad">
                 <p:panelGrid>
-                
+
                     <p:panelGrid>
                         <p:outputLabel value="Descripcion" for="descripcion" />
                         <br/>

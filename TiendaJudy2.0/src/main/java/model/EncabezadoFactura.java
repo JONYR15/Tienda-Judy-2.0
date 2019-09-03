@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -176,11 +177,13 @@ public class EncabezadoFactura implements Serializable {
     }
 
     public Date getFecha() {
+        Calendar cal = Calendar.getInstance();
+        fecha = cal.getTime();
         return fecha;
     }
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
+
 }

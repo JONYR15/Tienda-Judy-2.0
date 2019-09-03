@@ -30,58 +30,58 @@ import org.apache.commons.lang3.StringUtils;
 @Named
 @ViewScoped
 public class EncabezadoFacturaManaged implements Serializable {
-    
+
     @EJB
     private EncabezadoFacturaDAO encabezadoFacturaDAO;
-    
+
     @EJB
     private EncabezadoFactura encabezadoFactura;
-    
+
     @EJB
     private DetalleFactura detalleFactura;
-    
+
     @EJB
     private Producto producto;
-    
+
     @EJB
     private ProductoDAO productoDAO;
-    
+
     private List<EncabezadoFactura> encabezadoFacturaList;
-    
+
     public EncabezadoFacturaManaged() {
     }
-    
+
     @PostConstruct
     public void init() {
         encabezadoFactura = new EncabezadoFactura();
         detalleFactura = new DetalleFactura();
         producto = new Producto();
     }
-    
+
     public EncabezadoFactura getEncabezadoFactura() {
         return encabezadoFactura;
     }
-    
+
     public void setEncabezadoFactura(EncabezadoFactura encabezadoFactura) {
         this.encabezadoFactura = encabezadoFactura;
     }
-    
+
     public List<EncabezadoFactura> getEncabezadoFacturaList() {
         return encabezadoFacturaList;
     }
-    
+
     public void setEncabezadoFacturaList(List<EncabezadoFactura> encabezadoFacturaList) {
         this.encabezadoFacturaList = encabezadoFacturaList;
     }
-    
+
     public DetalleFactura getDetalleFactura() {
         return detalleFactura;
     }
-    
+
     public void setDetalleFactura(DetalleFactura detalleFactura) {
         this.detalleFactura = detalleFactura;
     }
-    
+
     public Producto getProducto() {
         String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
         if (!StringUtils.isEmpty(id)) {
@@ -89,11 +89,11 @@ public class EncabezadoFacturaManaged implements Serializable {
         }
         return producto;
     }
-    
+
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-    
+
     public void setProductoADetalle() {
         if (getProducto() != null && producto.getIdProducto() != null) {
             detalleFactura.setDescripcionProducto(producto.getDescripcion());
@@ -104,16 +104,28 @@ public class EncabezadoFacturaManaged implements Serializable {
             detalleFactura.setIdEncabezadoFactura(encabezadoFactura);
         }
     }
-    
+
     public void agregarDetalle() {
         if (encabezadoFactura.getDetalleFacturaList() == null) {
             encabezadoFactura.setDetalleFacturaList(new ArrayList<DetalleFactura>());
         }
         if (detalleFactura.getDescripcionProducto() != null) {
-            encabezadoFactura.getDetalleFacturaList().add(detalleFactura);
+            Boolean existe = false;
+            for (int i = 0; i < encabezadoFactura.getDetalleFacturaList().size(); i++) {
+                if (encabezadoFactura.getDetalleFacturaList().get(i).getIdProducto().getIdProducto() == detalleFactura.getIdProducto().getIdProducto()) {
+                    encabezadoFactura.getDetalleFacturaList().get(i).setCantidad(encabezadoFactura.getDetalleFacturaList().get(i).getCantidad() + detalleFactura.getCantidad());
+                    encabezadoFactura.getDetalleFacturaList().get(i).setTotal(encabezadoFactura.getDetalleFacturaList().get(i).getPrecio() * encabezadoFactura.getDetalleFacturaList().get(i).getCantidad());
+                    existe = true;
+                }
+
+            }
+            if (!existe) {
+                encabezadoFactura.getDetalleFacturaList().add(detalleFactura);
+            }
+
         }
     }
-    
+
     public void crearFactura() {
         if (encabezadoFactura != null) {
             if (encabezadoFacturaDAO.buscarEncabezadoFactura(encabezadoFactura.getIdEncabezadoFactura()) == null) {
@@ -126,12 +138,12 @@ public class EncabezadoFacturaManaged implements Serializable {
                     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "No se pudo cargar la pagina"));
                 }
                 encabezadoFactura = new EncabezadoFactura();
-                
+
             } else {
                 FacesContext context = FacesContext.getCurrentInstance();
                 context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR", "Ya existe una factura con el ID: " + encabezadoFactura.getIdEncabezadoFactura()));
             }
         }
     }
-    
+
 }
