@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Basic;
@@ -19,6 +20,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -36,6 +39,10 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "EncabezadoFactura.findByIva", query = "SELECT e FROM EncabezadoFactura e WHERE e.iva = :iva")
     , @NamedQuery(name = "EncabezadoFactura.findByTotalVenta", query = "SELECT e FROM EncabezadoFactura e WHERE e.totalVenta = :totalVenta")})
 public class EncabezadoFactura implements Serializable {
+
+    @Column(name = "FECHA")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -166,6 +173,14 @@ public class EncabezadoFactura implements Serializable {
     @Override
     public String toString() {
         return "model.EncabezadoFactura[ idEncabezadoFactura=" + idEncabezadoFactura + " ]";
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
     
 }
