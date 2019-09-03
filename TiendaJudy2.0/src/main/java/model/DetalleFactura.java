@@ -97,6 +97,9 @@ public class DetalleFactura implements Serializable {
     }
 
     public Double getTotal() {
+        if (cantidad != null && precio != null) {
+            total = precio * cantidad;
+        }
         return total;
     }
 

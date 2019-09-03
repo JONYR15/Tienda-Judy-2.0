@@ -92,10 +92,10 @@
                         <h:outputText value="#{detalleFactura.precioVenta}"/>
                     </p:column>
                     <p:column headerText="Acciones">
-                        <p:commandButton value="Insertar Producto" type="button" update="cantidad" onclick="PF('cantidad').show();">       
+                        <p:commandLink process="@this" resetValues="true" value="Insertar Producto" type="button" update="cantidad" onclick="PF('cantidad').show();">       
                             <f:param  value="#{detalleFactura.idProducto}" name="id"/> 
                             <p:ajax listener="#{encabezadoFacturaManaged.setProductoADetalle()}"/>
-                        </p:commandButton>
+                        </p:commandLink>
                     </p:column>
                 </p:dataTable>  
             </h:form>
@@ -105,7 +105,7 @@
 
             <h:form id="cantidad">
                 <p:panelGrid>
-
+                
                     <p:panelGrid>
                         <p:outputLabel value="Descripcion" for="descripcion" />
                         <br/>
@@ -121,8 +121,8 @@
                     <p:panelGrid>
                         <p:outputLabel value="Cantidad" for="cantidad"/>
                         <br/>
-                        <p:inputText id="cantidad" label="cantidad" required="true" value="#{encabezadoFacturaManaged.detalleFactura.cantidad}" requiredMessage="Campo requerido">
-                            <p:ajax event="change" update="total"/>
+                        <p:inputText type="number" id="cantidad" label="cantidad" required="true" value="#{encabezadoFacturaManaged.detalleFactura.cantidad}" requiredMessage="Campo requerido">
+                            <p:ajax event="keyup" update="total"/>
                         </p:inputText>
                     </p:panelGrid>
 
@@ -136,7 +136,7 @@
                 <br/>
                 <br/>
 
-                <p:commandButton value="Agregar" update="cantidad,formulario" oncomplete="if (!args.validationFailed){PF('detalleFactura').filter();PF('cantidad').show();PF('detalle').show();}" action="#{encabezadoFacturaManaged.agregarDetalle()}"/>
+                <p:commandLink value="Agregar" update="cantidad,formulario" oncomplete="if (!args.validationFailed){PF('detalleFactura').filter();PF('cantidad').hide();}" action="#{encabezadoFacturaManaged.agregarDetalle()}"/>
             </h:form>
         </p:dialog>
 
