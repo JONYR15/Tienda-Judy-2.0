@@ -105,7 +105,7 @@ public class EncabezadoFacturaManaged implements Serializable {
     }
 
     public void agregarDetalle() {
-        if (detalleFactura != null) {
+        if (detalleFactura.getDescripcionProducto() != null) {
             encabezadoFactura.getDetalleFacturaList().add(detalleFactura);
         }
     }
