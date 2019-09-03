@@ -25,14 +25,19 @@
                         <br/>
                         <p:selectOneMenu filter="true" filterMatchMode="contains" converter="clienteConvertidor" id="cliente" value="#{encabezadoFacturaManaged.encabezadoFactura.idCliente}" required="true" requiredMessage="#{msg['COMPANY.BANK']} #{msg['REQUIRED.FIELD']}" maxlength="50">
                             <f:selectItem itemLabel="Seleccione un Cliente" itemValue="" noSelectionOption="true" />
-                            <f:selectItems value="#{encabezadoFacturaManaged.getClientes}" var="cliente" 
+                            <f:selectItems value="#{encabezadoFacturaManaged.clientes}" var="cliente" 
                                            itemValue="#{cliente}" itemLabel="ID: #{cliente.idCliente} - Nombre: #{cliente.nombre}" />
-                        </p:selectOneMenu>   </p:panelGrid>
+                        </p:selectOneMenu>   
+                    </p:panelGrid>
 
                     <p:panelGrid>
                         <p:outputLabel value="Empleado" for="empleado"/>
                         <br/>
-                        <p:inputText id="empleado" label="Empleado" required="true" value="#{encabezadoFacturaManaged.encabezadoFactura.idEmpleado}" requiredMessage="Campo requerido"/>
+                        <p:selectOneMenu filter="true" filterMatchMode="contains" converter="empleadoConvertidor" id="cliente" value="#{encabezadoFacturaManaged.encabezadoFactura.idEmpleado}" required="true" requiredMessage="#{msg['COMPANY.BANK']} #{msg['REQUIRED.FIELD']}" maxlength="50">
+                            <f:selectItem itemLabel="Seleccione un empleado" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{encabezadoFacturaManaged.empleados}" var="empleado" 
+                                           itemValue="#{empleado}" itemLabel="ID: #{empleado.idEmpleado} - Nombre: #{empleado.nombre}" />
+                        </p:selectOneMenu>   
                     </p:panelGrid>
                 </p:panelGrid>
 

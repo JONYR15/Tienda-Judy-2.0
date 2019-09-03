@@ -6,6 +6,7 @@
 package Managed;
 
 import Dao.ClienteDAO;
+import Dao.EmpleadoDAO;
 import Dao.EncabezadoFacturaDAO;
 import Dao.ProductoDAO;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import model.Cliente;
 import model.DetalleFactura;
+import model.Empleado;
 import model.EncabezadoFactura;
 import model.Producto;
 import org.apache.commons.lang3.StringUtils;
@@ -49,6 +51,9 @@ public class EncabezadoFacturaManaged implements Serializable {
 
     @EJB
     private ClienteDAO clienteDAO;
+    
+    @EJB
+    private EmpleadoDAO empleadoDAO;
 
     private List<EncabezadoFactura> encabezadoFacturaList;
 
@@ -100,6 +105,10 @@ public class EncabezadoFacturaManaged implements Serializable {
 
     public List<Cliente> getClientes() {
         return clienteDAO.obtenerClientes();
+    }
+    
+    public List<Empleado> getEmpleados() {
+        return empleadoDAO.obtenerEmpleados();
     }
 
     public void setProductoADetalle() {
