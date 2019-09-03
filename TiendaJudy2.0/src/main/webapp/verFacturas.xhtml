@@ -7,53 +7,55 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
+        <div class="card card-w-title resolution-center ui-fluid">
+            <h2>Ver Facturas</h2>
+            <h:form>
+                <p:dataTable var="factura" value="#{encabezadoFacturaManaged.encabezadoFacturaList}">
 
-        <p:dataTable var="factura" value="#{encabezadoFacturaManaged.encabezadoFacturaList}">
-
-            <p:column style="width:16px">
-                <p:rowToggler />
-            </p:column>
-            <p:column headerText="Id">
-                <h:outputText value="#{factura.idEncabezadoFactura}" />
-            </p:column>
-
-            <p:column headerText="Fecha">
-                <h:outputText value="#{factura.fecha}" />
-            </p:column>
-
-            <p:column headerText="Cliente">
-                <h:outputText value="#{factura.idCliente.idCliente} - #{factura.idCliente.nombre}" />
-            </p:column>
-
-            <p:column headerText="Empleado">
-                <h:outputText value="#{factura.idEmpleado.idEmpleado} - #{factura.idEmpleado.nombre}" />
-            </p:column>
-
-            <p:rowExpansion>
-
-                <p:dataTable id="detalleFactura" widgetVar="detalleFactura" var="detalle" value="#{encabezadoFacturaManaged.encabezadoFactura.detalleFacturaList}" style="margin-bottom:20px">
-
-                    <p:column headerText="Descripcion">
-                        <p:outputLabel value="#{detalle.descripcionProducto}"/>
+                    <p:column style="width:16px">
+                        <p:rowToggler />
+                    </p:column>
+                    <p:column headerText="Id">
+                        <h:outputText value="#{factura.idEncabezadoFactura}" />
                     </p:column>
 
-                    <p:column headerText="Precio Unitario">
-                        <p:outputLabel value="#{detalle.precio}"/>
+                    <p:column headerText="Fecha">
+                        <h:outputText value="#{factura.fecha}" />
                     </p:column>
 
-                    <p:column headerText="Cantidad">
-                        <p:outputLabel value="#{detalle.cantidad}"/>
+                    <p:column headerText="Cliente">
+                        <h:outputText value="#{factura.idCliente.idCliente} - #{factura.idCliente.nombre}" />
                     </p:column>
 
-                    <p:column headerText="Total">
-                        <p:outputLabel value="#{detalle.total}"/>
+                    <p:column headerText="Empleado">
+                        <h:outputText value="#{factura.idEmpleado.idEmpleado} - #{factura.idEmpleado.nombre}" />
                     </p:column>
 
+                    <p:rowExpansion>
+
+                        <p:dataTable id="detalleFactura" widgetVar="detalleFactura" var="detalle" value="#{encabezadoFacturaManaged.encabezadoFactura.detalleFacturaList}" style="margin-bottom:20px">
+
+                            <p:column headerText="Descripcion">
+                                <p:outputLabel value="#{detalle.descripcionProducto}"/>
+                            </p:column>
+
+                            <p:column headerText="Precio Unitario">
+                                <p:outputLabel value="#{detalle.precio}"/>
+                            </p:column>
+
+                            <p:column headerText="Cantidad">
+                                <p:outputLabel value="#{detalle.cantidad}"/>
+                            </p:column>
+
+                            <p:column headerText="Total">
+                                <p:outputLabel value="#{detalle.total}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                    </p:rowExpansion>
                 </p:dataTable>
-            </p:rowExpansion>
-        </p:dataTable>
-
-
+            </h:form>
+        </div>
     </ui:define>     
 </ui:composition>
 
